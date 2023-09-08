@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#-----------------------------------------------------------
+## A script that returns the max value of a pid ###
+## Max value of pid is 32 bit int 2^32-1 = 4,294,967,295. ##
+#------------------------------------------------------------
+
+max_pid=$((2**32 - 1))
+
+##print the maximum value to the terminal
+echo "The Maximum value is $max_pid"
