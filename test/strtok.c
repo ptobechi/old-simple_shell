@@ -11,12 +11,9 @@ int count_tokens(char *str)
 	if (str[0] == '\0')
 		return (0);
 
-	while (str[i] != '\0')
-	{
+	for (i = 0; str[i] != '\0'; i++)
 		if (str[i] == ' ')
 			count++;
-		i++;
-	}
 
 	return (count);
 }
@@ -33,12 +30,8 @@ char *_strdup(char *s)
 	if (s_dup == NULL)
 		return (NULL);
 
-	i = 0;
-	while (s[i] != '\0')
-	{
+	for (i = 0; s[i] != '\0'; i++)
 		s_dup[i] = s[i];
-		i++;
-	}
 
 	s_dup[i] = '\0';
 
@@ -72,15 +65,13 @@ char *_strndup(char *s, int start, int end)
 
 int *get_token_pos_arr(char *str)
 {
-	int i, j, token_len;
-	int *token_pos_arr;
+	int i, j;
+	int token_len = count_tokens(str);
+	int *token_pos_arr = malloc(token_len * 2 * sizeof(int));
 
-	token_len = count_tokens(str);
-	token_pos_arr = malloc(token_len * 2 * sizeof(int));
 	if (token_pos_arr == NULL)
 		return (NULL);
 
-	printf("%d\n", token_len);
 	for (i = 0, j = 0; str[i] != '\0'; i++)
 	{
 		if (i == 0)
@@ -122,7 +113,7 @@ char **get_sub_str(char *str, int *token_pos_arr)
 int main(void)
 {
 	int i = 0, j = 0, k = 1;
-	char *str = "hello world again";
+	char *str = "hello world again! How are you?";
 	char **str_arr;
 	int token_len = count_tokens(str);
 
