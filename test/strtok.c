@@ -1,33 +1,140 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-/**
- * main - Entry Point
- *
- * Return: Always 0 (Success)
- */
-int main()
+int count_tokens(char *str)
 {
-	char delimiter = ' ';
-	char *original_string = "Hello New World";
-	char *new_string = NULL;
-	int count = 0;
-	char *buffer;
+	int i = 0, count = 1;
 
-	buffer = malloc(strlen(original_string) * sizeof(char));
+	if (str == NULL)
+		return (-1);
 
-	while (*original_string != '\0')
+	if (str[0] == '\0')
+		return (0);
+
+	while (str[i] != '\0')
 	{
-		if (*original_string == delimiter)
-			buffer[i] = '\0';
-		else
-			buffer[i] = *original_string;
-		/**orginal_string = NULL; */
-		/*new_string[count] = *original_string;*/
-		original_string++;
+		if (str[i] == ' ')
+			count++;
+		i++;
 	}
 
-	printf("%s", new_string);
+	return (count);
+}
+
+char *_strdup(char *s)
+{
+	char *s_dup;
+	int i = 0;
+
+	while (s[++i] != '\0');
+
+	i++;
+	s_dup = malloc(i * sizeof(char));
+	if (s_dup == NULL)
+		return (NULL);
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		s_dup[i] = s[i];
+		i++;
+	}
+
+	s_dup[i] = '\0';
+
+	return (s_dup);
+}
+
+char *_strndup(char *s, int start, int end)
+{
+	char *s_dup;
+	int i = 0;
+
+	while (s[++i] != '\0');
+
+	if (start > i || end > i || start >= end)
+		return (NULL);
+
+	i = end - start;
+	i++;
+
+	s_dup = malloc(i * sizeof(char));
+	if (s_dup == NULL)
+		return (NULL);
+
+	for (i = 0; start <= end; i++, start++)
+		s_dup[i] = s[start];
+
+	s_dup[i] = '\0';
+
+	return (s_dup);
+}
+
+int *get_token_pos_arr(char *str)
+{
+	int i, j, token_len;
+	int *token_pos_arr;
+
+	token_len = count_tokens(str);
+	token_pos_arr = malloc(token_len * 2 * sizeof(int));
+	if (token_pos_arr == NULL)
+		return (NULL);
+
+	printf("%d\n", token_len);
+	for (i = 0, j = 0; str[i] != '\0'; i++)
+	{
+		if (i == 0)
+		{
+			token_pos_arr[j] = 0;
+			j++;
+		}
+		if (str[i] == ' ')
+		{
+			token_pos_arr[j] = i - 1;
+			j++;
+			token_pos_arr[j] = i + 1;
+			j++;
+		}
+		if (str[i + 1] == '\0')
+			token_pos_arr[j] = i;
+	}
+	return (token_pos_arr);
+}
+
+char **get_sub_str(char *str, int *token_pos_arr)
+{
+	int i, j, k;
+	char **str_arr = NULL;
+	int token_len = count_tokens(str);
+
+	str_arr = malloc(token_len * sizeof(char*));
+	if (str_arr == NULL)
+		return (NULL);
+
+	for (i = 0, j = 0, k = 1; i < token_len; i++, j += 2, k += 2)
+		str_arr[i] = _strndup(str,token_pos_arr[j], token_pos_arr[k]);
+
+	free(token_pos_arr);
+
+	return (str_arr);
+}
+
+int main(void)
+{
+	int i = 0, j = 0, k = 1;
+	char *str = "hello world again";
+	char **str_arr;
+	int token_len = count_tokens(str);
+
+	str_arr = get_sub_str(str, get_token_pos_arr(str));
+
+	for (i = 0; i < token_len; i++)
+		printf("%s\n", str_arr[i]);
+
+	for (i = 0; i < token_len; i++)
+		free(str_arr[i]);
+
+	free(str_arr);
+
 	return (0);
 }
