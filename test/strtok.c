@@ -63,7 +63,7 @@ char *_strndup(char *s, int start, int end)
 	return (s_dup);
 }
 
-int *get_token_pos_arr(char *str)
+int *get_token_pos_arr(char *str, char *delim)
 {
 	int i, j;
 	int token_len = count_tokens(str);
@@ -79,7 +79,7 @@ int *get_token_pos_arr(char *str)
 			token_pos_arr[j] = 0;
 			j++;
 		}
-		if (str[i] == ' ')
+		if (str[i] == delim[0])
 		{
 			token_pos_arr[j] = i - 1;
 			j++;
@@ -92,13 +92,14 @@ int *get_token_pos_arr(char *str)
 	return (token_pos_arr);
 }
 
-char **get_sub_str(char *str)
+char **get_sub_str(char *str, char *delim)
 {
 	int i, j, k;
 	char **str_arr = NULL;
 	int token_len = count_tokens(str);
-	int *token_pos_arr = get_token_pos_arr(str);
+	int *token_pos_arr = get_token_pos_arr(str, delim);
 
+	token_len++;
 	str_arr = malloc(token_len * sizeof(char*));
 	if (str_arr == NULL)
 		return (NULL);
@@ -106,7 +107,24 @@ char **get_sub_str(char *str)
 	for (i = 0, j = 0, k = 1; i < token_len; i++, j += 2, k += 2)
 		str_arr[i] = _strndup(str,token_pos_arr[j], token_pos_arr[k]);
 
+	i++;
+	str_arr[i] = NULL;
+
 	free(token_pos_arr);
+
+	return (str_arr);
+}
+
+char **_strtok(char *str, char *delim)
+{
+	int i;
+	char **str_arr;
+	int token_len = count_tokens(str);
+
+	str_arr = get_sub_str(str, delim);
+
+	for (i = 0; i < token_len; i++)
+		printf("%s\n", str_arr[i]);
 
 	return (str_arr);
 }
@@ -115,16 +133,10 @@ int main(void)
 {
 	int i = 0, j = 0, k = 1;
 	char *str = "hello world again! How are you?";
+	char *delim = " ";
 	char **str_arr;
-	int token_len = count_tokens(str);
 
-	str_arr = get_sub_str(str);
-
-	for (i = 0; i < token_len; i++)
-		printf("%s\n", str_arr[i]);
-
-	for (i = 0; i < token_len; i++)
-		free(str_arr[i]);
+	str_arr = _strtok(str, delim);
 
 	free(str_arr);
 
