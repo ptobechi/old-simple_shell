@@ -92,11 +92,12 @@ int *get_token_pos_arr(char *str)
 	return (token_pos_arr);
 }
 
-char **get_sub_str(char *str, int *token_pos_arr)
+char **get_sub_str(char *str)
 {
 	int i, j, k;
 	char **str_arr = NULL;
 	int token_len = count_tokens(str);
+	int *token_pos_arr = get_token_pos_arr(str);
 
 	str_arr = malloc(token_len * sizeof(char*));
 	if (str_arr == NULL)
@@ -117,7 +118,7 @@ int main(void)
 	char **str_arr;
 	int token_len = count_tokens(str);
 
-	str_arr = get_sub_str(str, get_token_pos_arr(str));
+	str_arr = get_sub_str(str);
 
 	for (i = 0; i < token_len; i++)
 		printf("%s\n", str_arr[i]);
