@@ -25,14 +25,14 @@ int get_token_len(char *lineptr, char *delim)
  * @argv: argument variable
  *
  * Return: Always 0 (Suceess)
-*/
+ */
 int main(int argc, char **argv)
 {
-	char *lineptr = NULL;
+	char *lineptr = NULL, *lineptr_cpy = NULL;
 	ssize_t vread;
 	size_t n = 0;
-/*	char *_argv[] = NULL; ** doubt it will work */
-	char *token, *delim = " ";
+	char **_argv = NULL;
+	char *token, *delim = " |";
 	int i, token_len;
 
 	while (1)
@@ -46,28 +46,26 @@ int main(int argc, char **argv)
 			perror("Invalid Argument passed");
 		else
 		{
-			token_len = get_token_len(lineptr, delim);
+			lineptr_cpy = strdup(lineptr);			
+			token_len = get_token_len(lineptr_cpy, delim);
 			printf("%d\n", token_len);
-			/** tokenization using strtok */
-/*			token = strtok(lineptr, delim);
 
-			while (token != NULL)
-			{
-				creating a command table 
+			_argv = malloc(token_len * sizeof(char *));
+
+			i = 0;
+			do {
+				token = strtok(lineptr, delim);
+				lineptr = NULL;
+
 				_argv[i] = token;
-
-				strtok(NULL, delim);
 				i++;
-			}
+			} while (token != NULL);
 
-			for (i = 0; i < sizeof(_argv) / sizeof(_argv[0]); i++)
-			{
+			for (i = 0; _argv[i] != NULL; i++)
 				printf("%s\n", _argv[i]);
-			}
-*/
 		}
 	}
-/*	free(_argv);*/
+	free(_argv);
 	free(lineptr);
 	return (0);
 }
