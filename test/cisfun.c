@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 		if (vread == -1)
 			perror("Invalid Argument passed");
 		else
-		{
+		
 			/** tokenization using strtok */
 			token = strtok(lineptr, delim);
 
