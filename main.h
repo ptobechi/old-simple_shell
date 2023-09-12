@@ -17,4 +17,5 @@
 */
 int get_token_len(char *lineptr, char *delim);
 char *_strdup(char *s);
+char *remove_newline_char(char *s);
 #endif /** MAIN_H */
