@@ -8,10 +8,11 @@
  */
 int main(void)
 {
-    char *argv[] = {"./test", "Hello World", "It is Working",  NULL};
+    //char *argv[] = {"./test", "Hello World", "It is Working",  NULL};
+    char *argv[] = {"/bin/ls", "ls", "/usr", NULL};
 
     printf("Before execve\n");
-    if (execve(argv[1], argv, NULL) == -1)
+    if (execve(argv[0], argv, NULL) == -1)
     {
         perror("Error:");
     }
