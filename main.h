@@ -6,6 +6,7 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
 
 /**
  * Contributors: Tobechukwu Paschal, Pious Tenya
@@ -14,5 +15,6 @@
  *
  * description: function protype for a basic simple shell project
 */
-int get_token_len(cahr *lineptr, char *delim);
+int get_token_len(char *lineptr, char *delim);
+char *_strdup(char *s);
 #endif /** MAIN_H */
