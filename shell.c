@@ -1,23 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <stdlib.h>
-#include <string.h>
-
-int get_token_len(char *lineptr, char *delim)
-{
-	char *token;
-	int count = 0;
-
-	do {
-		token = strtok(lineptr, delim);
-		lineptr = NULL;
-		count++;
-	} while (token != NULL);
-
-	return (count);
-}
+#include "main.h"
 
 /**
  * main - Entry Point
@@ -46,7 +27,8 @@ int main(int argc, char **argv)
 			perror("Invalid Argument passed");
 		else
 		{
-			lineptr_cpy = strdup(lineptr);			
+			lineptr_cpy = _strdup(lineptr);
+
 			token_len = get_token_len(lineptr_cpy, delim);
 
 			_argv = malloc(token_len * sizeof(char *));
@@ -59,10 +41,27 @@ int main(int argc, char **argv)
 				_argv[i] = token;
 				i++;
 			} while (token != NULL);
+			//i++;
+			//_argv[i] = NULL;
 
-			for (i = 0; _argv[i] != NULL; i++)
-				printf("%s\n", _argv[i]);
+		//	char *_arg[] = {"/bin/ls", "/usr", NULL};
+
+			pid_t child_p = fork();
+			int status;
+		//	char *fpath = which(_argv[0]);
+
+		//	if (fpath== NULL)
+		//		perror("File not Found");
+
+			if (child_p == 0)
+			{
+				if (execve(_argv[0], _argv, NULL) == -1)
+					perror("Failed to run function");
+				printf("Child process complete\n");
+			}
+			wait(&status);
 		}
+		free(_argv);
 	}
 	free(_argv);
 	free(lineptr);
