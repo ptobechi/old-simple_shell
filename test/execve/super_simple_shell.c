@@ -7,10 +7,11 @@
 
 int get_token_len(char *lineptr, char *delim)
 {
-	char *token;
 	int count = 0;
+	char *token;
 
-	do {
+	do
+	{
 		token = strtok(lineptr, delim);
 		lineptr = NULL;
 		count++;
@@ -19,23 +20,8 @@ int get_token_len(char *lineptr, char *delim)
 	return (count);
 }
 
-char *remove_newline_char(char *s)
-{
-	int i = 0;
-
-	while (s[++i] != '\0');
-
-	if (s[i - 1] == '\n')
-		s[i - 1] = '\0';
-
-	return (s);
-}
-
 int main(void)
 {
-	//char *argv[] = {"./test", "Hello World", "It is Working",  NULL};
-	char *argv[] = {"/bin/ls", "ls", "/usr", NULL};
-
 	char *lineptr, *lineptr_dup, *token;
 	size_t n = 0;
 	char *delim = " |";
@@ -63,12 +49,7 @@ int main(void)
 		token = strtok(lineptr, delim);
 		lineptr = NULL;
 
-		if (token != NULL)
-		{
-			token = remove_newline_char(token);
-			argv[i++] = token;
-		}
-
+		argv[i++] = token;
 	} while (token != NULL);
 
 	child_pid = fork();
@@ -79,6 +60,7 @@ int main(void)
 	}
 	if (child_pid == 0)
 	{
+		printf("%s--\n", argv[0]);
 		if (execve(argv[0], argv, NULL) == -1)
 		{
 			perror("Execve error:");
@@ -99,6 +81,4 @@ int main(void)
 	free(lineptr);
 	free(argv);
 	return (0);
-	>>>>>>> 98f38a5c652d5aebc6d3b0aa1eb4972262052013
 }
-
