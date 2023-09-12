@@ -33,7 +33,9 @@ char *remove_newline_char(char *s)
 
 int main(void)
 {
-<<<<<<< HEAD
+	//char *argv[] = {"./test", "Hello World", "It is Working",  NULL};
+	char *argv[] = {"/bin/ls", "ls", "/usr", NULL};
+
 	char *lineptr, *lineptr_dup, *token;
 	size_t n = 0;
 	char *delim = " |";
@@ -97,17 +99,4 @@ int main(void)
 	free(lineptr);
 	free(argv);
 	return (0);
-=======
-    //char *argv[] = {"./test", "Hello World", "It is Working",  NULL};
-    char *argv[] = {"/bin/ls", "ls", "/usr", NULL};
-
-    printf("Before execve\n");
-    if (execve(argv[0], argv, NULL) == -1)
-    {
-        perror("Error:");
-    }
-    printf("After execve\n");
-    return (0);
->>>>>>> 4cb8eadc452cadf506de60678d3c10659d8dfe48
 }
-

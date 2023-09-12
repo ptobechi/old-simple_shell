@@ -33,25 +33,25 @@ int main(int argc, char **argv)
 
 			_argv = malloc(token_len * sizeof(char *));
 
+			//parsing and creating a cmd table
 			i = 0;
 			do {
 				token = strtok(lineptr, delim);
 				lineptr = NULL;
 
-				_argv[i] = token;
-				i++;
+				//remove newlines from token
+				if (token != NULL)
+				{
+					token = remove_newline_char(token);
+					_argv[i] = token;
+					i++;
+				}
 			} while (token != NULL);
-			//i++;
-			//_argv[i] = NULL;
 
-		//	char *_arg[] = {"/bin/ls", "/usr", NULL};
+			//char *_arg[] = {"/bin/ls", "/usr", NULL};
 
 			pid_t child_p = fork();
 			int status;
-		//	char *fpath = which(_argv[0]);
-
-		//	if (fpath== NULL)
-		//		perror("File not Found");
 
 			if (child_p == 0)
 			{
