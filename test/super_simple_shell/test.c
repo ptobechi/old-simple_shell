@@ -5,32 +5,6 @@
 #include <sys/wait.h>
 #include <string.h>
 
-int get_token_len(char *lineptr, char *delim)
-{
-	char *token;
-	int count = 0;
-
-	do {
-		token = strtok(lineptr, delim);
-		lineptr = NULL;
-		count++;
-	} while (token != NULL);
-
-	return (count);
-}
-
-char *remove_newline_char(char *s)
-{
-	int i = 0;
-
-	while (s[++i] != '\0');
-
-	if (s[i - 1] == '\n')
-		s[i - 1] = '\0';
-
-	return (s);
-}
-
 int main(void)
 {
 	char *lineptr, *lineptr_dup, *token;
@@ -61,11 +35,9 @@ int main(void)
 		lineptr = NULL;
 
 		if (token != NULL)
-		{
-			token = remove_newline_char(token);
-			argv[i++] = token;
-		}
+			printf("%ld\n", strlen(token));
 
+		argv[i++] = token;
 	} while (token != NULL);
 
 	child_pid = fork();
@@ -76,6 +48,7 @@ int main(void)
 	}
 	if (child_pid == 0)
 	{
+		printf("%s--\n", argv[0]);
 		if (execve(argv[0], argv, NULL) == -1)
 		{
 			perror("Execve error:");
@@ -97,4 +70,5 @@ int main(void)
 	free(argv);
 	return (0);
 }
+
 

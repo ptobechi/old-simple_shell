@@ -48,7 +48,6 @@ int main(int argc, char **argv)
 		{
 			lineptr_cpy = strdup(lineptr);			
 			token_len = get_token_len(lineptr_cpy, delim);
-			printf("%d\n", token_len);
 
 			_argv = malloc(token_len * sizeof(char *));
 
