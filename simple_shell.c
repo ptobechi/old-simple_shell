@@ -13,8 +13,6 @@ int main(int argc, char **argv)
 	ssize_t vread;
 	size_t n = 0;
 	char **_argv = NULL;
-	char *token, *delim = " |";
-	int i;
 	int status;
 	pid_t child_p;
 
