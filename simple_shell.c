@@ -15,31 +15,36 @@ int main(int argc, char **argv)
 	char **_argv = NULL;
 	char *token, *delim = " |";
 	int i, token_len;
+	int status;
+	pid_t child_p;
 
-	while (1)
+	(void)argc;
+	(void)argv;
+
+	printf("ghst$ ");
+	while (1 && (vread = getline(&lineptr, &n, stdin)) != EOF)
 	{
 		printf("ghst$ ");
-
-		vread = getline(&lineptr, &n, stdin);
 
 		/** check value passed from cmd line*/
 		if (vread == -1)
 			perror("Invalid Argument passed");
 		else
 		{
+			/** duplicate and count tokens*/
 			lineptr_cpy = _strdup(lineptr);
-
 			token_len = get_token_len(lineptr_cpy, delim);
 
+			/*mem alloc for cmd table */
 			_argv = malloc(token_len * sizeof(char *));
 
-			//parsing and creating a cmd table
+			/*parsing and creating a cmd table*/
 			i = 0;
 			do {
 				token = strtok(lineptr, delim);
 				lineptr = NULL;
 
-				//remove newlines from token
+				/*remove newlines from token*/
 				if (token != NULL)
 				{
 					token = remove_newline_char(token);
@@ -48,22 +53,17 @@ int main(int argc, char **argv)
 				}
 			} while (token != NULL);
 
-			//char *_arg[] = {"/bin/ls", "/usr", NULL};
-
-			pid_t child_p = fork();
-			int status;
-
+			/* create a child process for execve call */
+			child_p = fork();
 			if (child_p == 0)
 			{
 				if (execve(_argv[0], _argv, NULL) == -1)
 					perror("Failed to run function");
-				printf("Child process complete\n");
 			}
-			wait(&status);
+			wait(&status); /* wait for child_p completion */
+			free(_argv);
 		}
-		free(_argv);
 	}
-	free(_argv);
 	free(lineptr);
 	return (0);
 }
