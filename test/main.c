@@ -99,6 +99,4 @@ int main(void)
 	free(lineptr);
 	free(argv);
 	return (0);
-	>>>>>>> 98f38a5c652d5aebc6d3b0aa1eb4972262052013
 }
-
