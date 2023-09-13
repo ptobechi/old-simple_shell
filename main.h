@@ -36,3 +36,8 @@ char *remove_newline_char(char *s);
 #define CREATE_CMD_TABLE
 char **create_cmd_table(char *);
 #endif
+
+#ifndef FIND_FILE
+#define FIND_FILE
+int find_file(char *);
+#endif
