@@ -9,12 +9,12 @@
  */
 int main(int argc, char **argv)
 {
-	char *lineptr = NULL, *lineptr_cpy = NULL;
+	char *lineptr = NULL;
 	ssize_t vread;
 	size_t n = 0;
 	char **_argv = NULL;
 	char *token, *delim = " |";
-	int i, token_len;
+	int i;
 	int status;
 	pid_t child_p;
 
@@ -31,27 +31,7 @@ int main(int argc, char **argv)
 			perror("Invalid Argument passed");
 		else
 		{
-			/** duplicate and count tokens*/
-			lineptr_cpy = _strdup(lineptr);
-			token_len = get_token_len(lineptr_cpy, delim);
-
-			/*mem alloc for cmd table */
-			_argv = malloc(token_len * sizeof(char *));
-
-			/*parsing and creating a cmd table*/
-			i = 0;
-			do {
-				token = strtok(lineptr, delim);
-				lineptr = NULL;
-
-				/*remove newlines from token*/
-				if (token != NULL)
-				{
-					token = remove_newline_char(token);
-					_argv[i] = token;
-					i++;
-				}
-			} while (token != NULL);
+			_argv =	create_cmd_table(lineptr);
 
 			/* create a child process for execve call */
 			child_p = fork();
