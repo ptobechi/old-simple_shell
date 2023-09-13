@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 			if (child_p == 0)
 			{
 				if (execve(_argv[0], _argv, NULL) == -1)
-					perror("Failed to run function");
+					perror("execve error:");
 			}
 			wait(&status); /* wait for child_p completion */
 			free(_argv);

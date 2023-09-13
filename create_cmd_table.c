@@ -27,7 +27,7 @@ char **create_cmd_table(char *lineptr)
 		}
 	} while (token != NULL);
 
-	free(lineptr);
+	free(lineptr_cpy);
 	
 	return (_argv);
 }
