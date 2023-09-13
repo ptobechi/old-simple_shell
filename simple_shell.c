@@ -29,6 +29,7 @@ int main(int argc, char **argv)
 			perror("Invalid Argument passed");
 		else
 		{
+			/** create cmd table */
 			_argv =	create_cmd_table(lineptr);
 
 			/* create a child process for execve call */

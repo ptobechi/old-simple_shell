@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * create_cmd_table - creates command table
+ * @lineptr: argument received from getline
+ *
+ * Return: Always 0 (Success);
+*/
 char **create_cmd_table(char *lineptr)
 {
 	char *lineptr_cpy, *token, *delim = " ";

@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * get_token_len count token
+ * get_token_len - count token
  * @lineptr: string
  * @delim: delimeter
  *
