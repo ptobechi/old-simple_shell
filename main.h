@@ -7,7 +7,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #endif /** MAIN_H */
+
+#ifndef PATH_LIST
+#define PATH_LIST
+typedef struct path_list
+{
+	char *path;
+	struct path_list *next;
+} p_ll;
+#endif
 
 /**
  * Contributors: Tobechukwu Paschal, Pious Tenya
@@ -37,7 +47,53 @@ char *remove_newline_char(char *s);
 char **create_cmd_table(char *);
 #endif
 
-#ifndef FIND_FILE
-#define FIND_FILE
-int find_file(char *);
+#ifndef _STRCCMP
+#define _STRCCMP
+int _strccmp(const char *s1, const char *s2, char c);
 #endif
+
+#ifndef _GETENV
+#define _GETENV
+char *_getenv(const char *name);
+#endif
+
+#ifndef _GETENV_VAL
+#define _GETENV_VAL
+char *_getenv_val(char *env, const char *name);
+#endif
+
+#ifndef _FIND_FILE
+#define _FIND_FILE
+int find_file(char *file_path);
+#endif
+
+#ifndef _APPEND_NODE
+#define _APPEND_NODE
+p_ll *append_node(p_ll *head, char *path);
+#endif
+
+#ifndef _CREATE_P_LL
+#define _CREATE_P_LL
+p_ll *_create_p_ll(void);
+#endif
+
+#ifndef _STRCAT
+#define _STRCAT
+char *_strcat(char *dest, char *src);
+#endif
+
+#ifndef _FIND_CMD_FULL_PATH
+#define _FIND_CMD_FULL_PATH
+char *find_cmd_full_path(char *cmd);
+#endif
+
+#ifndef _GET_CMD_PATH
+#define _GET_CMD_PATH
+char *get_cmd_path(char *cmd);
+#endif
+
+#ifndef _RUN_CMD
+#define _RUN_CMD
+void run_cmd(char *path, char **_argv);
+#endif
+

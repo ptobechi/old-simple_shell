@@ -4,7 +4,7 @@
 #include "main.h"
 
 /**
- * main - print environment variable value
+ * main - print value of a given env variable
  * @ac: argument count
  * @av: null terminated list of array of arguments
  *
