@@ -5,7 +5,6 @@
 char *_getenv(const char *name)
 {
 	unsigned int i;
-	extern char **environ;
 
 	i = 0;
 	while (environ[i] != NULL)

@@ -27,6 +27,11 @@ typedef struct path_list
  * description: function protype for a basic simple shell project
 */
 
+#ifndef ENVIRON
+#define ENVIRON
+extern char **environ;
+#endif
+
 #ifndef GET_TOKEN_LEN
 #define GET_TOKEN_LEN
 int get_token_len(char *lineptr, char *delim);
