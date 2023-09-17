@@ -26,6 +26,8 @@ int main(void)
 			else
 				run_cmd(cmd_path, _argv);
 		}
+		free(lineptr);
+		lineptr = NULL;
 	}
 	return (0);
 }

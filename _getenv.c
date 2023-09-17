@@ -18,7 +18,7 @@ char *_getenv(const char *name)
 			if (val == NULL)
 				return (NULL);
 
-			for (k = 0; environ[i][j] != '\0'; j++, k++)
+			for (k = 0, j++; environ[i][j] != '\0'; j++, k++)
 				val[k] = environ[i][j];
 
 			val[k] = '\0';
