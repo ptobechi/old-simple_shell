@@ -1,22 +1,27 @@
 #include "main.h"
 
-/**
- * get_token_len - count token
- * @lineptr: string
- * @delim: delimeter
- *
- * Return: Always 0 (Success)
-*/
-int get_token_len(char *lineptr, char *delim)
+int get_token_len(char *str, char delim)
 {
-	char *token;
-	int count = 0;
+	int i, j, count = 1;
 
-	do {
-		token = strtok(lineptr, delim);
-		lineptr = NULL;
-		count++;
-	} while (token != NULL);
+	if (str == NULL)
+		return (-1);
 
+	if (str[0] == '\0')
+		return (0);
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] == delim)
+		{
+			for (j = i + 1; str[j] != '\0'; j++)
+				if (str[j] != delim)
+				{
+					count++;
+					i = j;
+					break;
+				}
+		}
+	}
 	return (count);
 }

@@ -34,12 +34,27 @@ extern char **environ;
 
 #ifndef GET_TOKEN_LEN
 #define GET_TOKEN_LEN
-int get_token_len(char *lineptr, char *delim);
+int get_token_len(char *str, char delim);
 #endif
 
 #ifndef _STRDUP
 #define _STRDUP
 char *_strdup(char *s);
+#endif
+
+#ifndef _STRNDUP
+#define _STRNDUP
+char *_strndup(char *s, int start, int end);
+#endif
+
+#ifndef _GET_TOKENS_POSITIONS
+#define _GET_TOKENS_POSITIONS
+int *get_tokens_positions(char *str, char delim);
+#endif
+
+#ifndef _GET_TOKENS
+#define _GET_TOKENS
+char **_strtok(char *str, char delim);
 #endif
 
 #ifndef REMOVE_NEWLINE_CHAR
@@ -49,7 +64,7 @@ char *remove_newline_char(char *s);
 
 #ifndef CREATE_CMD_TABLE
 #define CREATE_CMD_TABLE
-char **create_cmd_table(char *);
+char **create_cmd_table(char *, char);
 #endif
 
 #ifndef _STRCCMP

@@ -3,17 +3,19 @@
 p_ll *create_path_ll(void)
 {
 	p_ll *head = NULL, *new, *temp;
-	char *name = "PATH", *val, *token, *delim = ":";
+	char *name = "PATH", *val, **tokens, delim = ':';
+	int i;
 
 	val = _getenv(name);
 
 	if (val == NULL)
 		return (NULL);
 
-	printf("%s\n", val);
-	while ((token = strtok(val, delim)) != NULL)
+	tokens = _strtok(val, delim);
+
+	for (i = 0; tokens[i] != NULL; i++)
 	{
-		head = append_node(head, _strdup(token));
+		head = append_node(head, _strdup(tokens[i]));
 
 		if (val != NULL)
 		{
