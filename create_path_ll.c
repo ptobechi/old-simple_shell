@@ -10,16 +10,17 @@ p_ll *create_path_ll(void)
 	if (val == NULL)
 		return (NULL);
 
-	do {
-		token = strtok(val, delim);
-		if (token != NULL)
-			head = append_node(head, _strdup(token));
-		
-		if (val != NULL)
-			free(val);
+	printf("%s\n", val);
+	while ((token = strtok(val, delim)) != NULL)
+	{
+		head = append_node(head, _strdup(token));
 
-		val = NULL;
-	} while (token != NULL);
+		if (val != NULL)
+		{
+			free(val);
+			val = NULL;
+		}
+	}; 
 
 	return (head);
 }
