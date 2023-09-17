@@ -4,7 +4,7 @@ p_ll *append_node(p_ll *head, char *path)
 {
 	p_ll *new, *temp;
 
-	new = malloc(sizeof(p_ll *));
+	new = malloc(sizeof(p_ll));
 	if (new == NULL)
 		return (NULL);
 
