@@ -5,6 +5,9 @@ char *get_cmd_path(char *cmd)
 	char *cmd_full_path;
 	p_ll *head = NULL, *temp;
 
+	if (cmd == NULL)
+		return (NULL);
+
 	if (cmd[0] == '/' || find_file(cmd) == 0)
 		return (cmd);
 
