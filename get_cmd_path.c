@@ -2,7 +2,7 @@
 
 char *get_cmd_path(char *cmd)
 {
-	char *cmd_full_path;
+	char *cmd_full_path, *cmd_parent_path;
 	p_ll *head = NULL, *temp;
 
 	if (cmd == NULL)
@@ -19,8 +19,8 @@ char *get_cmd_path(char *cmd)
 	temp = head;
 	do
 	{
-		cmd_full_path = _strcat(temp->path, "/");
-		cmd_full_path = _strcat(cmd_full_path, cmd);
+		cmd_parent_path = _strcat(temp->path, "/");
+		cmd_full_path = _strcat(cmd_parent_path, cmd);
 
 		if (find_file(cmd_full_path) == 0)
 			break;
