@@ -3,13 +3,29 @@
 char *get_cmd_path(char *cmd)
 {
 	char *cmd_full_path;
+	p_ll *head = NULL, *temp;
 
 	if (cmd[0] == '/' || find_file(cmd) == 0)
 		return (cmd);
 
-	cmd_full_path = find_cmd_full_path(cmd);
-	if (cmd_full_path != NULL)
-		return (cmd_full_path);
+	/** create linked list from env var PATH **/
+	head = create_path_ll();
+	if (head == NULL)
+		return (0);
+	/** find dirs for command exec file **/
+	temp = head;
+	do
+	{
+		cmd_full_path = _strcat(temp->path, "/");
+		cmd_full_path = _strcat(cmd_full_path, cmd);
 
-	return (NULL);
+		if (find_file(cmd_full_path) == 0)
+			break;
+		cmd_full_path = NULL;
+
+		temp = temp->next;
+	}
+	while (temp->next != NULL);
+
+	return (cmd_full_path);
 }

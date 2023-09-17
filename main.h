@@ -79,7 +79,7 @@ p_ll *append_node(p_ll *head, char *path);
 
 #ifndef _CREATE_P_LL
 #define _CREATE_P_LL
-p_ll *_create_p_ll(void);
+p_ll *create_path_ll(void);
 #endif
 
 #ifndef _STRCAT

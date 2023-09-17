@@ -1,6 +1,6 @@
 #include "main.h"
 
-p_ll *_create_p_ll(void)
+p_ll *create_path_ll(void)
 {
 	p_ll *head = NULL, *new, *temp;
 	char *name = "PATH", *val, *token, *delim = ":";
