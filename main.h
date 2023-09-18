@@ -94,6 +94,11 @@ int find_file(char *file_path);
 p_ll *append_node(p_ll *head, char *path);
 #endif
 
+#ifndef GET_ENV
+#define GET_ENV
+void getEnv(char **envp);
+#endif
+
 #ifndef _CREATE_P_LL
 #define _CREATE_P_LL
 p_ll *create_path_ll(void);
