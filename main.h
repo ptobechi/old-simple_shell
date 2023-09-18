@@ -8,6 +8,8 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <signal.h>
+
 #endif /** MAIN_H */
 
 #ifndef PATH_LIST
@@ -117,3 +119,7 @@ char *get_cmd_path(char *cmd);
 void run_cmd(char *path, char **_argv);
 #endif
 
+#ifndef HANDLE_SIGNAL_H
+#define HANDLE_SIGNAL_H
+void handle_signal(int signum);
+#endif
