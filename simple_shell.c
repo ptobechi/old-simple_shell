@@ -7,6 +7,8 @@ int main(void)
 	size_t n = 0;
 	char **_argv = NULL, delim = ' ';
 
+	(void)PATH_val;
+
 	while (1) {
 		printf("ghst$ ");
 
