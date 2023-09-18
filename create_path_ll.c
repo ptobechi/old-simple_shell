@@ -27,5 +27,6 @@ p_ll *create_path_ll(void)
 		}
 	};
 
+	free_2d_array(tokens);
 	return (head);
 }

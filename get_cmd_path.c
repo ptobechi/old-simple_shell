@@ -32,5 +32,6 @@ char *get_cmd_path(char *cmd)
 	}
 	while (temp->next != NULL);
 
+	_free_linked_list(head);
 	return (cmd_full_path);
 }

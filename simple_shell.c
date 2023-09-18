@@ -2,14 +2,12 @@
 
 int main(void)
 {
-	char *PATH_val, *cmd_path;
+	char *cmd_path;
 	ssize_t vread;
 	size_t n = 0;
 	char **_argv = NULL, delim = ' ';
 
-	(void)PATH_val;
-
-/*	lineptr = NULL; */
+	lineptr = NULL;
 
 	signal(SIGINT, handle_signal);
 
@@ -30,8 +28,12 @@ int main(void)
 			if (cmd_path == NULL)
 				printf("Command '%s' not found!\n", _argv[0]);
 			else
+			{
 				run_cmd(cmd_path, _argv);
+				free_2d_array(_argv);
+			}
 		}
+		free(lineptr);
 	}
 	return (0);
 }

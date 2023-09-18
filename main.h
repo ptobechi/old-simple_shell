@@ -31,6 +31,11 @@ typedef struct path_list
  * description: function protype for a basic simple shell project
 */
 
+#ifndef _FREE_LINKED_LIST
+#define _FREE_LINKED_LIST
+void _free_linked_list(p_ll *head);
+#endif
+
 #ifndef ENVIRON
 #define ENVIRON
 extern char **environ;
@@ -44,6 +49,11 @@ int get_token_len(char *str, char delim);
 #ifndef _STRDUP
 #define _STRDUP
 char *_strdup(char *s);
+#endif
+
+#ifndef _FREE_2D_ARRAY
+#define _FREE_2D_ARRAY
+void free_2d_array(char **_arr);
 #endif
 
 #ifndef _STRNDUP
