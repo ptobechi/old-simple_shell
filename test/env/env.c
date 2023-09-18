@@ -1,5 +1,13 @@
 #include <stdio.h>
 
+/**
+ * main - print environment variable using the third parameter of main
+ * @ac: argument count
+ * @av: argument vector
+ * @env: enviroment variable
+ *
+ * Return: Always (0);
+*/
 int main(int ac, char **av, char **env)
 {
 	unsigned int i;

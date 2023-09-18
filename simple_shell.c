@@ -1,48 +1,35 @@
 #include "main.h"
 
-/**
- * main - Entry Point
- * @argc: argument count
- * @argv: argument variable
- *
- * Return: Always 0 (Suceess)
- */
-int main(int argc, char **argv)
+int main(void)
 {
-	char *lineptr = NULL;
+	char *lineptr = NULL, *PATH_val, *cmd_path;
 	ssize_t vread;
 	size_t n = 0;
 	char **_argv = NULL;
-	int status;
-	pid_t child_p;
 
-	(void)argc;
-	(void)argv;
+	(void)PATH_val;
 
-	printf("ghst$ ");
-	while (1 && (vread = getline(&lineptr, &n, stdin)) != EOF)
-	{
+	while (1) {
 		printf("ghst$ ");
 
-		/** check value passed from cmd line*/
+		vread = getline(&lineptr, &n, stdin);
 		if (vread == -1)
-			perror("Invalid Argument passed");
+			perror("getline failed:");
 		else
 		{
-			/** create cmd table */
+			if (vread == EOF)
+				return (0);
+
 			_argv =	create_cmd_table(lineptr);
 
-			/* create a child process for execve call */
-			child_p = fork();
-			if (child_p == 0)
-			{
-				if (execve(_argv[0], _argv, NULL) == -1)
-					perror("execve error:");
-			}
-			wait(&status); /* wait for child_p completion */
-			free(_argv);
+			cmd_path = get_cmd_path(_argv[0]);
+			if (cmd_path == NULL)
+				printf("Command '%s' not found!\n", _argv[0]);
+			else
+				run_cmd(cmd_path, _argv);
 		}
+		free(lineptr);
+		lineptr = NULL;
 	}
-	free(lineptr);
 	return (0);
 }

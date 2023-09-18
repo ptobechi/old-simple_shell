@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *getenv_val(char *env, const char *name)
+char *_getenv_val(char *env, const char *name)
 {
 	int i = 0, j = 0;
 	char *val;

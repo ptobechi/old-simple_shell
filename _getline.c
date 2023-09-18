@@ -54,7 +54,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 
 	return (read_line);
 }
-
+/**
 int main(int argc, char *argv[])
 {
 	FILE *stream;
@@ -75,7 +75,6 @@ int main(int argc, char *argv[])
 
 	while ((nread = _getline(&line, &len, stream)) != -1) {
 		printf("Retrieved line of length %ld:\n", nread);
-		/*fwrite(line, nread, 1, stdout);*/
 		printf("%s", line);
 	}
 
@@ -83,3 +82,4 @@ int main(int argc, char *argv[])
 	fclose(stream);
 	exit(EXIT_SUCCESS);
 }
+*/

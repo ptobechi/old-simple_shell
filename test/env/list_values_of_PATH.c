@@ -4,6 +4,11 @@
 #include <string.h>
 #include "main.h"
 
+/**
+ * main - list the directories from the PATH env var value
+ *
+ * Return: Alawys (0);
+*/
 int main(void)
 {
 	char *name = "PATH", *val, *token, *delim = ":";
