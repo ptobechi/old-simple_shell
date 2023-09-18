@@ -6,9 +6,6 @@ p_ll *create_path_ll(void)
 	char *name = "PATH", *val, **tokens, delim = ':';
 	int i;
 
-	(void)new;
-	(void)temp;
-
 	val = _getenv(name);
 
 	if (val == NULL)
@@ -25,7 +22,7 @@ p_ll *create_path_ll(void)
 			free(val);
 			val = NULL;
 		}
-	};
+	}; 
 
 	return (head);
 }
