@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * main - A simple shell program
+ *
+ * Return: Always 0 (sucess)
+ *
+ */
 int main(void)
 {
 	char *cmd_path;
@@ -11,7 +17,8 @@ int main(void)
 
 	signal(SIGINT, handle_signal);
 
-	while (1) {
+	while (1)
+	{
 		printf("ghst$ ");
 
 		vread = _getline(&lineptr, &n, stdin);
@@ -31,6 +38,7 @@ int main(void)
 			{
 				run_cmd(cmd_path, _argv);
 				free_2d_array(_argv);
+				free(cmd_path);
 			}
 		}
 		free(lineptr);

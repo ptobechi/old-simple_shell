@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * get_token_len - count length of token
+ * @str: string
+ * @delim: delimiter
+ *
+ * Return: Always 0 (Success)
+ */
 int get_token_len(char *str, char delim)
 {
 	int i, j, count = 1;

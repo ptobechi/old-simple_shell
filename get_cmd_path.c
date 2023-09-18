@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * get_cmd_path - search for executable cmd
+ * @cmd: command
+ *
+ * Return: location pointer
+ */
 char *get_cmd_path(char *cmd)
 {
 	char *cmd_full_path, *cmd_parent_path;
@@ -18,8 +24,7 @@ char *get_cmd_path(char *cmd)
 
 	/** find dirs for command exec file **/
 	temp = head;
-	do
-	{
+	do {
 		cmd_parent_path = _strcat(temp->path, "/");
 		cmd_full_path = _strcat(cmd_parent_path, cmd);
 
@@ -29,8 +34,7 @@ char *get_cmd_path(char *cmd)
 		cmd_full_path = NULL;
 
 		temp = temp->next;
-	}
-	while (temp->next != NULL);
+	} while (temp->next != NULL);
 
 	_free_linked_list(head);
 	return (cmd_full_path);

@@ -1,9 +1,11 @@
 #include "main.h"
 
 /**
- * getEnv - get environment variable
+ * getenv - get environment variable
  *
- * Return: Null
+ * @name: Environment path
+ *
+ * Return: Always 0 (Sucess)
 */
 char *_getenv(const char *name)
 {
@@ -14,8 +16,11 @@ char *_getenv(const char *name)
 	{
 		if (_strccmp(environ[i], name, '=') == 0)
 		{
-			while (name[++j] != '\0');
-			while (environ[i][++k] != '\0');
+			while (name[++j] != '\0')
+				;
+
+			while (environ[i][++k] != '\0')
+				;
 
 			val = malloc((k - j) * sizeof(char));
 			if (val == NULL)

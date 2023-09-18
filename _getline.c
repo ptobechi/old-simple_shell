@@ -2,17 +2,24 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+/**
+ * _getline - reads input from a file stream
+ * @lineptr: strings
+ * @n: number of char read from stream
+ * @stream: file pointer
+ *
+ * Return: Always 0 (Success)
+ */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	char *buffer = NULL;
-	size_t buffer_size = 0;
+	char *buffer = NULL, *new_buffer;
+	size_t buffer_size = 1024;
 	size_t read_line = 0;
 	int _char;
 
 	if (*lineptr == NULL || *n == 0)
 	{
-		buffer_size = 1024; /** SET BUFFER SIZE */
-		buffer = (char *)malloc(buffer_size * sizeof(char)); /** mem alloc of 1024 */
+		buffer = (char *)malloc(buffer_size * sizeof(char));
 
 		if (buffer == NULL)
 			return (-1);
@@ -28,8 +35,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 
 	while ((_char = fgetc(stream)) != EOF)
 	{
-		char *new_buffer;
-
 		if (read_line >= buffer_size - 1)
 		{
 			/** double the buffer size */
@@ -55,27 +60,3 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 
 	return (read_line);
 }
-/**
-int main(int argc, char *argv[])
-{
-	ssize_t nread;
-	size_t len = 0;
-	char *line = NULL;
-
-	(void)argc;
-	(void)argv;
-	(void) nread;
-
-	printf("Type someting: ");
-
-	nread = _getline(&line, &len, stdin);
-
-	if (nread == -1) {
-		printf("Error reading input.\n");
-	} else {
-		printf("%s\n", line);
-	}
-
-	free(line);
-	return (0);
-}*/

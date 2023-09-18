@@ -1,13 +1,15 @@
 #include "main.h"
 
+/**
+ * create_path_ll - create linked list
+ *
+ * Return: void
+ */
 p_ll *create_path_ll(void)
 {
-	p_ll *head = NULL, *new, *temp;
+	p_ll *head = NULL;
 	char *name = "PATH", *val, **tokens, delim = ':';
 	int i;
-
-	(void)new;
-	(void)temp;
 
 	val = _getenv(name);
 
@@ -19,14 +21,9 @@ p_ll *create_path_ll(void)
 	for (i = 0; tokens[i] != NULL; i++)
 	{
 		head = append_node(head, _strdup(tokens[i]));
-
-		if (val != NULL)
-		{
-			free(val);
-			val = NULL;
-		}
 	};
 
+	free(val);
 	free_2d_array(tokens);
 	return (head);
 }

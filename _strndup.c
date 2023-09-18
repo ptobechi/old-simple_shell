@@ -1,11 +1,20 @@
 #include "main.h"
 
+/**
+ * _strndup - dup and return a new string
+ * @start: starting point
+ * @end: end of string dup
+ * @s: string
+ *
+ * Return: pointer to a new string
+ */
 char *_strndup(char *s, int start, int end)
 {
 	char *s_dup;
 	int i = 0;
 
-	while (s[++i] != '\0');
+	while (s[++i] != '\0')
+		;
 
 	if (start > i || end > i || start >= end)
 		return (NULL);

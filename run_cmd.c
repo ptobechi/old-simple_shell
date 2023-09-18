@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * run_cmd - execute cmd
+ * @path: cmd path
+ * @_argv: array of null terminated strings
+ *
+ * Return: void
+ */
 void run_cmd(char *path, char **_argv)
 {
 	int status;

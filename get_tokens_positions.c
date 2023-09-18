@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * get_tokens_positions - find positions for each token
+ * @str: strings
+ * @delim: delimiter
+ *
+ * Return: Always 0 (Success)
+ */
 int *get_tokens_positions(char *str, char delim)
 {
 	int i, j;

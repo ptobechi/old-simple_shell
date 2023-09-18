@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * append_node - add a new node to a linked list
+ * @head: node haed
+ * @path: path to add
+ *
+ * Return: pointer to linked list head
+ */
 p_ll *append_node(p_ll *head, char *path)
 {
 	p_ll *new, *temp;
