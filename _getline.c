@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
@@ -54,32 +55,23 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 
 	return (read_line);
 }
-/**
+
 int main(int argc, char *argv[])
 {
-	FILE *stream;
-	char *line = NULL;
-	size_t len = 0;
 	ssize_t nread;
+	size_t len = 0;
+	char *line = NULL;
 
-	if (argc != 2) {
-		fprintf(stderr, "Usage: %s <file>\n", argv[0]);
-		exit(EXIT_FAILURE);
-	}
+	(void)argc;
+	(void)argv;
+	(void) nread;
 
-	stream = fopen(argv[1], "r");
-	if (stream == NULL) {
-		perror("fopen");
-		exit(EXIT_FAILURE);
-	}
+	printf("Type someting: ");
 
-	while ((nread = _getline(&line, &len, stream)) != -1) {
-		printf("Retrieved line of length %ld:\n", nread);
-		printf("%s", line);
-	}
+	nread = _getline(&line, &len, stdin);
+	printf("%s\n", line);
+	printf("------------ %s:\n", "Line Two");
 
 	free(line);
-	fclose(stream);
-	exit(EXIT_SUCCESS);
+	return (0);
 }
-*/
