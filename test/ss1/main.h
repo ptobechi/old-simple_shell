@@ -8,10 +8,6 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <signal.h>
-
-char *lineptr;
-
 #endif /** MAIN_H */
 
 #ifndef PATH_LIST
@@ -59,11 +55,6 @@ int *get_tokens_positions(char *str, char delim);
 #ifndef _GET_TOKENS
 #define _GET_TOKENS
 char **_strtok(char *str, char delim);
-#endif
-
-#ifndef _GET_LINE
-#define _GET_LINE
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 #endif
 
 #ifndef REMOVE_NEWLINE_CHAR
@@ -126,7 +117,3 @@ char *get_cmd_path(char *cmd);
 void run_cmd(char *path, char **_argv);
 #endif
 
-#ifndef HANDLE_SIGNAL_H
-#define HANDLE_SIGNAL_H
-void handle_signal(int signum);
-#endif

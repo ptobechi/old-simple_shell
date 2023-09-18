@@ -12,12 +12,8 @@ char *_strcat(char *dest, char *src)
 	int i = 0, j = 0;
 	char *str;
 
-	while (dest[++i] != '\0')
-		;
-
-	while(src[++j] != '\0')
-		;
-
+	while (dest[++i] != '\0');
+	while(src[++j] != '\0');
 	i++;
 
 	str = malloc((i + j) * sizeof(char));

@@ -1,10 +1,7 @@
+#include <stdio.h>
+#include <unistd.h>
 #include "main.h"
 
-/**
- * getEnv - get environment variable
- *
- * Return: Null
-*/
 char *_getenv(const char *name)
 {
 	int i = 0, j = 0, k = 0;

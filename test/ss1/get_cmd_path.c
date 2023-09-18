@@ -15,7 +15,6 @@ char *get_cmd_path(char *cmd)
 	head = create_path_ll();
 	if (head == NULL)
 		return (0);
-
 	/** find dirs for command exec file **/
 	temp = head;
 	do
@@ -25,7 +24,6 @@ char *get_cmd_path(char *cmd)
 
 		if (find_file(cmd_full_path) == 0)
 			break;
-
 		cmd_full_path = NULL;
 
 		temp = temp->next;
