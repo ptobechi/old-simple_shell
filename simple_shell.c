@@ -12,7 +12,7 @@ int main(void)
 	while (1) {
 		printf("ghst$ ");
 
-		vread = getline(&lineptr, &n, stdin);
+		vread = _getline(&lineptr, &n, stdin);
 		if (vread == -1)
 			perror("getline failed:");
 		else

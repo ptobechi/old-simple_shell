@@ -11,7 +11,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 
 	if (*lineptr == NULL || *n == 0)
 	{
-		buffer_size = 128; /** SET BUFFER SIZE */
+		buffer_size = 1024; /** SET BUFFER SIZE */
 		buffer = (char *)malloc(buffer_size * sizeof(char)); /** mem alloc of 1024 */
 
 		if (buffer == NULL)
@@ -45,7 +45,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 		}
 		buffer[read_line++] = (char)_char;
 
-		if (_char == '\0')
+		if (_char == '\0' || _char == '\n')
 			break;
 	}
 
@@ -55,7 +55,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 
 	return (read_line);
 }
-
+/**
 int main(int argc, char *argv[])
 {
 	ssize_t nread;
@@ -69,9 +69,13 @@ int main(int argc, char *argv[])
 	printf("Type someting: ");
 
 	nread = _getline(&line, &len, stdin);
-	printf("%s\n", line);
-	printf("------------ %s:\n", "Line Two");
+
+	if (nread == -1) {
+		printf("Error reading input.\n");
+	} else {
+		printf("%s\n", line);
+	}
 
 	free(line);
 	return (0);
-}
+}*/
