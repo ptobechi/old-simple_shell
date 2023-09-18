@@ -9,7 +9,7 @@ int main(void)
 
 	(void)PATH_val;
 
-	lineptr = NULL;
+/*	lineptr = NULL; */
 
 	signal(SIGINT, handle_signal);
 
