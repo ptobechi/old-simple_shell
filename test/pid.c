@@ -9,7 +9,6 @@
 int main(void)
 {
 	pid_t my_pid;
-	pid_t pid;
 
 	my_pid = getpid();
 

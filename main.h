@@ -41,3 +41,8 @@ char **create_cmd_table(char *);
 #define FIND_FILE
 int find_file(char *);
 #endif
+
+#ifndef GET_ENV
+#define GET_ENV
+void getEnv(char **envp);
+#endif
