@@ -59,6 +59,11 @@ int *get_tokens_positions(char *str, char delim);
 char **_strtok(char *str, char delim);
 #endif
 
+#ifndef _GET_LINE
+#define _GET_LINE
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+#endif
+
 #ifndef REMOVE_NEWLINE_CHAR
 #define REMOVE_NEWLINE_CHAR
 char *remove_newline_char(char *s);
@@ -92,11 +97,6 @@ int find_file(char *file_path);
 #ifndef _APPEND_NODE
 #define _APPEND_NODE
 p_ll *append_node(p_ll *head, char *path);
-#endif
-
-#ifndef GET_ENV
-#define GET_ENV
-void getEnv(char **envp);
 #endif
 
 #ifndef _CREATE_P_LL
