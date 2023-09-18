@@ -18,7 +18,7 @@ int main(void)
 		else
 		{
 			if (vread == EOF)
-				return (0);
+				return (-1);
 
 			_argv =	create_cmd_table(lineptr);
 
