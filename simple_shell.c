@@ -15,19 +15,15 @@ int main(void)
 			perror("getline failed:");
 		else
 		{
-			if (vread == EOF)
-				return (0);
 
 			_argv =	_strtok(lineptr, delim);
-			
+
 			cmd_path = get_cmd_path(_argv[0]);
 			if (cmd_path == NULL)
 				printf("Command '%s' not found!\n", _argv[0]);
 			else
 				run_cmd(cmd_path, _argv);
 		}
-		free(lineptr);
-		lineptr = NULL;
 	}
 	return (0);
 }
