@@ -26,9 +26,6 @@ int main(void)
 			perror("getline failed:");
 		else
 		{
-			if (vread == EOF)
-				return (-1);
-
 			_argv =	_strtok(lineptr, delim);
 
 			cmd_path = get_cmd_path(_argv[0]);
