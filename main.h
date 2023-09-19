@@ -16,20 +16,19 @@ extern char *lineptr;
 
 #ifndef PATH_LIST
 #define PATH_LIST
+/**
+ * struct path_list - path linked list
+ * @path: cmd path
+ * @next: points to the next node
+ *
+ * Description: linked list node structure
+ */
 typedef struct path_list
 {
 	char *path;
 	struct path_list *next;
 } p_ll;
 #endif
-
-/**
- * Contributors: Tobechukwu Paschal, Pious Tenya
- *
- * file: main.h
- *
- * description: function protype for a basic simple shell project
-*/
 
 #ifndef _FREE_LINKED_LIST
 #define _FREE_LINKED_LIST
