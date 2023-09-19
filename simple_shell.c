@@ -8,6 +8,9 @@
  * Return: Always 0 (sucess)
  *
  */
+
+char *lineptr = NULL;
+
 int main(int argc, char **argv, char **envp)
 {
 	char *cmd_path;
@@ -15,7 +18,6 @@ int main(int argc, char **argv, char **envp)
 	size_t n = 0;
 	char **_argv = NULL, delim = ' ';
 
-	lineptr = NULL;
 	(void)envp;
 	(void)argv;
 	(void)argc;
@@ -39,9 +41,9 @@ int main(int argc, char **argv, char **envp)
 				perror("No such file or directory");
 			else
 				run_cmd(cmd_path, _argv);
-			free(cmd_path);
 		}
 	}
+	free(cmd_path);
 
 	free_2d_array(_argv);
 
