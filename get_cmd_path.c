@@ -28,6 +28,7 @@ char *get_cmd_path(char *cmd)
 		cmd_parent_path = _strcat(temp->path, "/");
 		cmd_full_path = _strcat(cmd_parent_path, cmd);
 
+		free(cmd_parent_path);
 		if (find_file(cmd_full_path) == 0)
 			break;
 

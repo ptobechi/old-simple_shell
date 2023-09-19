@@ -23,10 +23,10 @@ int main(int argc, char **argv, char **envp)
 	signal(SIGINT, handle_signal);
 
 
-	printf("ghst$ ");
+	printf("$");
 	while ((vread = getline(&lineptr, &n, stdin)) != -1)
 	{
-		printf("ghst$ ");
+		printf("$");
 
 		if (vread == -1)
 			perror("getline failed:");
@@ -38,15 +38,12 @@ int main(int argc, char **argv, char **envp)
 			if (cmd_path == NULL)
 				perror("No such file or directory");
 			else
-			{
 				run_cmd(cmd_path, _argv);
-			/*	free_2d_array(_argv);*/
-			}
+			free(cmd_path);
 		}
 	}
 
-	free(cmd_path);
-	free(lineptr);
+	free_2d_array(_argv);
 
 	return (0);
 }
