@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * getenv - get environment variable
+ * _getenv - get environment variable
  *
  * @name: Environment path
  *
