@@ -11,8 +11,13 @@
 #include <signal.h>
 
 extern char *lineptr;
-
+extern char **environ;
 #endif /** MAIN_H */
+
+#ifndef _PRINT_ENV
+#define _PRINT_ENV
+void _printenv(void);
+#endif
 
 #ifndef PATH_LIST
 #define PATH_LIST

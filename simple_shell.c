@@ -17,7 +17,7 @@ int main(int argc, char **argv, char **envp)
 	char **_argv = NULL, delim = ' ';
 	char *lineptr = NULL;
 
-	/*(void)envp;*/
+	(void)envp;
 	(void)argv;
 	(void)argc;
 
@@ -41,7 +41,7 @@ int main(int argc, char **argv, char **envp)
 				exit(900);
 			}
 			else if (_strccmp(_argv[0], "env", '\0') == 0)
-				_getenv(*envp);
+				_printenv();
 			else
 			{
 				cmd_path = get_cmd_path(_argv[0]);
