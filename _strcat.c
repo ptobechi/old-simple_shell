@@ -20,7 +20,7 @@ char *_strcat(char *dest, char *src)
 
 	i++;
 
-	str = malloc((i + j) * sizeof(char));
+	str = malloc((i + j + 1) * sizeof(char));
 
 	for (i = 0; dest[i] != '\0'; i++)
 		str[i] = dest[i];

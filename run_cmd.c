@@ -21,5 +21,4 @@ void run_cmd(char *path, char **_argv)
 	}
 
 	wait(&status); /* wait for child_p completion */
-	free(path);
 }

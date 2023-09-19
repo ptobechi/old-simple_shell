@@ -19,9 +19,7 @@ p_ll *create_path_ll(void)
 	tokens = _strtok(val, delim);
 
 	for (i = 0; tokens[i] != NULL; i++)
-	{
 		head = append_node(head, _strdup(tokens[i]));
-	};
 
 	free(val);
 	free_2d_array(tokens);
