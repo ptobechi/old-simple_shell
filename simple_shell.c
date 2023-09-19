@@ -8,6 +8,9 @@
  * Return: Always 0 (sucess)
  *
  */
+
+char *lineptr = NULL;
+
 int main(int argc, char **argv, char **envp)
 {
 	char *cmd_path;
@@ -15,7 +18,6 @@ int main(int argc, char **argv, char **envp)
 	size_t n = 0;
 	char **_argv = NULL, delim = ' ';
 
-	lineptr = NULL;
 	(void)envp;
 	(void)argv;
 	(void)argc;
@@ -43,6 +45,7 @@ int main(int argc, char **argv, char **envp)
 
 		free_2d_array(_argv);
 	}
+	free(cmd_path);
 
 
 	return (0);

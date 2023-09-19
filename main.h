@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <signal.h>
 
-char *lineptr;
+extern char *lineptr;
 
 #endif /** MAIN_H */
 
