@@ -2,11 +2,13 @@
 
 /**
  * main - A simple shell program
+ * @argc: argument count
  *
+ * @argv:
  * Return: Always 0 (sucess)
  *
  */
-int main(void)
+int main(int argc, char **argv, char **envp)
 {
 	char *cmd_path;
 	ssize_t vread;
@@ -14,14 +16,18 @@ int main(void)
 	char **_argv = NULL, delim = ' ';
 
 	lineptr = NULL;
+	(void)envp;
+	(void)argv;
+	(void)argc;
 
 	signal(SIGINT, handle_signal);
 
-	while (1)
+
+	printf("ghst$ ");
+	while ((vread = getline(&lineptr, &n, stdin)) != -1)
 	{
 		printf("ghst$ ");
 
-		vread = getline(&lineptr, &n, stdin);
 		if (vread == -1)
 			perror("getline failed:");
 		else
@@ -34,10 +40,11 @@ int main(void)
 			else
 			{
 				run_cmd(cmd_path, _argv);
-				free_2d_array(_argv);
+			/*	free_2d_array(_argv);*/
 			}
 		}
 	}
+
 	free(cmd_path);
 	free(lineptr);
 
