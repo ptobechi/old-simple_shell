@@ -38,7 +38,8 @@ int main(void)
 				free(cmd_path);
 			}
 		}
-		free(lineptr);
 	}
+	free(lineptr);
+
 	return (0);
 }
