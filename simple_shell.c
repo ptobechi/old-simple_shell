@@ -21,7 +21,7 @@ int main(void)
 	{
 		printf("ghst$ ");
 
-		vread = _getline(&lineptr, &n, stdin);
+		vread = getline(&lineptr, &n, stdin);
 		if (vread == -1)
 			perror("getline failed:");
 		else
@@ -35,10 +35,10 @@ int main(void)
 			{
 				run_cmd(cmd_path, _argv);
 				free_2d_array(_argv);
-				free(cmd_path);
 			}
 		}
 	}
+	free(cmd_path);
 	free(lineptr);
 
 	return (0);
