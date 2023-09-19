@@ -18,7 +18,7 @@ int main(int argc, char **argv, char **envp)
 	size_t n = 0;
 	char **_argv = NULL, delim = ' ';
 
-	(void)envp;
+	/*(void)envp;*/
 	(void)argv;
 	(void)argc;
 
@@ -36,11 +36,21 @@ int main(int argc, char **argv, char **envp)
 		{
 			_argv =	_strtok(lineptr, delim);
 
-			cmd_path = get_cmd_path(_argv[0]);
-			if (cmd_path == NULL)
-				perror("No such file or directory");
+			if (_strccmp(_argv[0], "exit", '\0') == 0)
+			{
+				free_2d_array(_argv);
+				exit(900);
+			}
+			else if (_strccmp(_argv[0], "env", '\0') == 0)
+				_getenv(*envp);
 			else
-				run_cmd(cmd_path, _argv);
+			{
+				cmd_path = get_cmd_path(_argv[0]);
+				if (cmd_path == NULL)
+					perror("No such file or directory");
+				else
+					run_cmd(cmd_path, _argv);
+			}
 		}
 
 		free_2d_array(_argv);
