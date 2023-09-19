@@ -36,7 +36,7 @@ int main(int argc, char **argv, char **envp)
 
 			cmd_path = get_cmd_path(_argv[0]);
 			if (cmd_path == NULL)
-				printf("Command '%s' not found!\n", _argv[0]);
+				perror("No such file or directory");
 			else
 			{
 				run_cmd(cmd_path, _argv);
