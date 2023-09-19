@@ -8,7 +8,6 @@
  */
 void handle_signal(int signum)
 {
-
-	printf("--exiting now...%s\n", lineptr);
+	printf("exiting now...\n");
 	exit(signum);
 }

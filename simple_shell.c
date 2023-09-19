@@ -9,14 +9,13 @@
  *
  */
 
-char *lineptr = NULL;
-
 int main(int argc, char **argv, char **envp)
 {
 	char *cmd_path;
 	ssize_t vread;
 	size_t n = 0;
 	char **_argv = NULL, delim = ' ';
+	char *lineptr = NULL;
 
 	(void)envp;
 	(void)argv;
