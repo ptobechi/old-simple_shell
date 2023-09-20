@@ -7,7 +7,7 @@
  *
  * Return: tokens string of null char
  */
-char **_strtok(char *str, char delim)
+char **_strtok(char *str, char *delim)
 {
 	(void)str;
 	(void)delim;

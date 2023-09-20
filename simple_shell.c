@@ -22,7 +22,7 @@ int main(int argc, char **argv, char **envp)
 
 	while (1)
 	{
-		printf("$ ");
+		printf("$");
 
 		/** handle EOF and ctrl D */
 		vread = getline(&lineptr, &n, stdin);
