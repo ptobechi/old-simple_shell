@@ -2,13 +2,9 @@
 
 /**
  * main - A simple shell program
- * @argc: argument count
  *
- * @argv:
  * Return: Always 0 (sucess)
- *
  */
-
 int main(void)
 {
 	/*char *cmd_path;*/
@@ -24,15 +20,14 @@ int main(void)
 		printf("$ ");
 
 		/** handle EOF and ctrl D */
-		if ((vread = getline(&lineptr, &n, stdin)) == -1)
+		vread = getline(&lineptr, &n, stdin);
+		if (vread == -1)
 		{
 			printf("\n");
 			break;
 		}
 
-		/** handle tokenization */
-
-
+		/** handle tokenization and cmd table */
 		_argv =	_create_cmd_table(lineptr, delim);
 		/**	if (_strccmp(_argv[0], "exit", '\0') == 0)
 		  {
@@ -50,10 +45,10 @@ int main(void)
 		/*}*/
 
 		free_2d_array(_argv);
-		free(lineptr);
 	}
 	/*	free(cmd_path);*/
 
+		free(lineptr);
 
 	return (0);
 }

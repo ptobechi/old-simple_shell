@@ -17,7 +17,7 @@ void run_cmd(char *path, char **_argv)
 	if (child_p == 0)
 	{
 		if (execve(path, _argv, NULL) == -1)
-			perror("execve error:");
+			perror("$");
 	}
 
 	wait(&status); /* wait for child_p completion */
