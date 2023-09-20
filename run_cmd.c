@@ -21,7 +21,7 @@ void run_cmd(char **_argv)
 
 		if (child_p == 0)
 		{
-			if (execve(_argv[0], _argv, NULL) == -1)
+			if (execve(cmd_path, _argv, NULL) == -1)
 				perror("$");
 		}
 	}

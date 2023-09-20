@@ -2,15 +2,23 @@
 
 /**
  * main - A simple shell program
+ * @argc: argument count
+ * @argv: argument variable
+ * @envp: environment pointer
  *
  * Return: Always 0 (sucess)
  */
-int main(void)
+int main(int argc, char **argv, char **envp)
 {
 	ssize_t vread;
 	size_t n = 0;
 	char **_argv = NULL, *delim = " ";
 	char *lineptr = NULL;
+
+	(void)argc;
+	(void)argv;
+	(void)envp;
+
 
 	signal(SIGINT, handle_signal);
 
@@ -39,6 +47,7 @@ int main(void)
 			/** prints environment variable */
 			_printenv();
 		else
+			/** execute command */
 			run_cmd(_argv);
 
 		free_2d_array(_argv);

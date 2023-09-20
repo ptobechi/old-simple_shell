@@ -1,5 +1,5 @@
-#include "main.h"
-
+#include <stdio.h>
+#include <stdlib.h>
 /**
  * _getenv - get environment variable
  *
@@ -14,7 +14,7 @@ char *_getenv(const char *name)
 
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		if (_strccmp(environ[i], name, '=') == 0)
+		if (strccmp(environ[i], name, '=') == 0)
 		{
 			while (name[++j] != '\0')
 				;
@@ -34,4 +34,12 @@ char *_getenv(const char *name)
 		}
 	}
 	return (val);
+}
+
+void main(char *name)
+{
+	char *result;
+
+	result = _getenv("PATH");
+	printf("%s\n", result);
 }
