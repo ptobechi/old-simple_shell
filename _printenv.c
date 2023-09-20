@@ -5,11 +5,11 @@
  *
  * Return: void
  */
-void _printenv(void)
+void _printenv(char **env)
 {
-	while (*environ != NULL)
+	while (*env != NULL)
 	{
-		printf("%s\n", *environ);
-		environ++;
+		printf("%s\n", *env);
+		env++;
 	}
 }

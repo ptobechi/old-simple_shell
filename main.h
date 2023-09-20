@@ -16,7 +16,7 @@ extern char **environ;
 
 #ifndef _PRINT_ENV
 #define _PRINT_ENV
-void _printenv(void);
+void _printenv(char **env);
 int exit_shell(int argc, char **argv, char **envp);
 #endif
 

@@ -17,8 +17,6 @@ int main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	(void)envp;
-
 
 	signal(SIGINT, handle_signal);
 
@@ -45,7 +43,7 @@ int main(int argc, char **argv, char **envp)
 		}
 		else if (_strccmp(_argv[0], "env", '\0') == 0)
 			/** prints environment variable */
-			_printenv();
+			_printenv(envp);
 		else
 			/** execute command */
 			run_cmd(_argv);

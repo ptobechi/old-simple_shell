@@ -1,0 +1,15 @@
+#include "main.h"
+
+/**
+ * _getline - read stream of data
+ * @lineptr: file stream
+ * @n: number of bytes read
+ * @stream: source
+ *
+ * Return: A pointer to null terminater char
+ */
+char *_getline(char **lineptr, size_t *n, FILE *stream)
+{
+	return (lineptr);
+}
+
