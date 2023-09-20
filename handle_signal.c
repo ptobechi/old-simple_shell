@@ -8,6 +8,6 @@
  */
 void handle_signal(int signum)
 {
-	perror("exiting now...");
+	write(STDOUT_FILENO, "\n", 1);
 	exit(signum);
 }
