@@ -7,6 +7,7 @@
  *
  * Return: tokens
  */
+/*
 char **_strtok(char *str, char delim)
 {
 	int i, j, k;
@@ -30,3 +31,4 @@ char **_strtok(char *str, char delim)
 
 	return (str_arr);
 }
+*/

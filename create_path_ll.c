@@ -8,7 +8,7 @@
 p_ll *create_path_ll(void)
 {
 	p_ll *head = NULL;
-	char *name = "PATH", *val, **tokens, delim = ':';
+	char *name = "PATH", *val, **tokens, *delim = ":";
 	int i;
 
 	val = _getenv(name);
@@ -16,7 +16,7 @@ p_ll *create_path_ll(void)
 	if (val == NULL)
 		return (NULL);
 
-	tokens = _strtok(val, delim);
+	tokens = _create_cmd_table(val, delim);
 
 	for (i = 0; tokens[i] != NULL; i++)
 		head = append_node(head, _strdup(tokens[i]));

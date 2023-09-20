@@ -7,7 +7,7 @@
  *
  * Return: Always 0 (Success)
  */
-int *get_tokens_positions(char *str, char delim)
+int *get_tokens_positions(char *str, char *delim)
 {
 	int i, j;
 	int token_len = get_token_len(str, delim);
@@ -23,7 +23,7 @@ int *get_tokens_positions(char *str, char delim)
 			tokens_positions[j] = 0;
 			j++;
 		}
-		if (str[i] == delim)
+		if (str[i] == *delim)
 		{
 			tokens_positions[j] = i - 1;
 			j++;

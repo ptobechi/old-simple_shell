@@ -9,7 +9,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <signal.h>
-
+char **_create_cmd_table(char *tokens, char *delim);
 extern char *lineptr;
 extern char **environ;
 #endif /** MAIN_H */
@@ -47,7 +47,7 @@ extern char **environ;
 
 #ifndef GET_TOKEN_LEN
 #define GET_TOKEN_LEN
-int get_token_len(char *str, char delim);
+int get_token_len(char *str, char *delim);
 #endif
 
 #ifndef _STRDUP
@@ -67,12 +67,12 @@ char *_strndup(char *s, int start, int end);
 
 #ifndef _GET_TOKENS_POSITIONS
 #define _GET_TOKENS_POSITIONS
-int *get_tokens_positions(char *str, char delim);
+int *get_tokens_positions(char *str, char *delim);
 #endif
 
 #ifndef _GET_TOKENS
 #define _GET_TOKENS
-char **_strtok(char *str, char delim);
+/*char **_strtok(char *str, char delim);*/
 #endif
 
 #ifndef _GET_LINE

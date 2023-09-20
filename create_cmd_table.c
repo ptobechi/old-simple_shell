@@ -6,31 +6,16 @@
  *
  * Return: Always 0 (Success)
  */
-char *_create_cmd_table(char *tokens, char *delim)
+char **_create_cmd_table(char *tokens, char *delim)
 {
-	char **_arr = NULL, char *tokens_cpy, char *token, *token_count;
-	int count = 0;
+	char **_arr = NULL, *tokens_cpy, *token;
+	int token_len, i;
 
-	/** duplicate tokens */
-	tokens_cpy = strdup(tokens);
+	token_len = get_token_len(tokens, delim);
 
-	if (tokens_cpy == NULL)
-	{
-		perror("token duplicate failed");
-		return (NULL);
-	}
 
-	/**count tokens and allocate memory for _arr **/
-	token_count = strdup(tokens);
-	token = sttrok(token_count, delim);
-	while (token != NULL)
-	{
-		count++;
-		token = strtok(NULL, delim);
-	}
-	free(token_count);
-
-	_arr = (char **)malloc((count + 1) * sizeof(char *));
+	/** mem allocation for cmd table */
+	_arr = (char **)malloc(sizeof(char *) * (token_len + 1));
 	if (_arr == NULL)
 	{
 		perror("Memomry allocation failed");
@@ -38,19 +23,21 @@ char *_create_cmd_table(char *tokens, char *delim)
 	}
 
 	/** tokenize token_cpy and store tokens to _arr */
-	count = 0;
+	i = 0;
+	tokens_cpy = strdup(tokens);
 	token = strtok(tokens_cpy, delim);
 	while (token != NULL)
 	{
-		_arr[count] = strdup(token);
-		if (_arr[count] == NULL)
+		_arr[i] = strdup(remove_newline_char(token));
+		if (_arr[i] == NULL)
 		{
-			free_2d_array(_arr);
+			perror("Memory allocation failed");
 			free(tokens_cpy);
+			free_2d_array(_arr);
 			return (NULL);
 		}
-		count++;
 		token = strtok(NULL, delim);
+		i++;
 	}
 	_arr[i] = NULL;
 
