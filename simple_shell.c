@@ -22,7 +22,8 @@ int main(int argc, char **argv, char **envp)
 
 	while (1)
 	{
-		printf("$");
+		char dollarSign = '$';
+		write(STDOUT_FILENO, &dollarSign, 1);
 
 		/** handle EOF and ctrl D */
 		vread = getline(&lineptr, &n, stdin);
