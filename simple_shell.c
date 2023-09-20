@@ -29,26 +29,27 @@ int main(void)
 
 		/** handle tokenization and cmd table */
 		_argv =	_create_cmd_table(lineptr, delim);
-		/**	if (_strccmp(_argv[0], "exit", '\0') == 0)
-		  {
-		  exit(900);
-		  }
-		  else if (_strccmp(_argv[0], "env", '\0') == 0)
-		  _printenv();
-		  else
-		  {
-		  cmd_path = get_cmd_path(_argv[0]);
-		  if (cmd_path == NULL)
-		  perror("No such file or directory");
-		  else*/
-		run_cmd(_argv[0], _argv);
-		/*}*/
+		if (_strccmp(_argv[0], "exit", '\0') == 0)
+		{
+			free_2d_array(_argv);
+			exit(900);
+		}
+		else if (_strccmp(_argv[0], "env", '\0') == 0)
+			_printenv();
+		/*else
+		{
+			cmd_path = get_cmd_path(_argv[0]);
+			if (cmd_path == NULL)
+				perror("No such file or directory");
+			else
+				run_cmd(_argv[0], _argv);
+		}*/
 
 		free_2d_array(_argv);
 	}
 	/*	free(cmd_path);*/
 
-		free(lineptr);
+	free(lineptr);
 
 	return (0);
 }
