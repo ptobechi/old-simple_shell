@@ -137,7 +137,7 @@ char *get_cmd_path(char *cmd);
 
 #ifndef _RUN_CMD
 #define _RUN_CMD
-void run_cmd(char *path, char **_argv);
+void run_cmd(char **_argv);
 #endif
 
 #ifndef HANDLE_SIGNAL_H

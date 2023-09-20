@@ -1,8 +1,9 @@
 #include "main.h"
 
 /**
- * create_cmd_table - create a command table
+ * _create_cmd_table - create a command table
  * @tokens: string of null terminated char
+ * @delim: delimeter
  *
  * Return: Always 0 (Success)
  */
