@@ -9,5 +9,8 @@
  */
 char **_strtok(char *str, char delim)
 {
+	(void)str;
+	(void)delim;
+
 	return (NULL);
 }
