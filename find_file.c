@@ -12,7 +12,7 @@ int find_file(char *file_path)
 
 	if (file_path == NULL)
 	{
-		perror("File path is NULL\n");
+		perror("File path is NULL");
 		return (-1);
 	}
 

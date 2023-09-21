@@ -22,8 +22,10 @@ int main(int argc, char **argv, char **envp)
 
 	while (1)
 	{
-		write(STDOUT_FILENO, "$", 1);
-
+		if (isatty(STDIN_FILENO))
+		{
+			write(STDOUT_FILENO, "$", 1);
+		}
 		/** handle EOF and ctrl D */
 		vread = getline(&lineptr, &n, stdin);
 		if (vread == -1)
@@ -48,7 +50,7 @@ int main(int argc, char **argv, char **envp)
 			/** execute command */
 			run_cmd(_argv);
 
-		free_2d_array(_argv);
+	/*	free_2d_array(_argv);*/
 	}
 
 	free(lineptr);
