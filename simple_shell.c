@@ -24,7 +24,7 @@ int main(int argc, char **argv, char **envp)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			write(STDOUT_FILENO, "$", 1);
+			write(STDOUT_FILENO, "$ \n", 1);
 		}
 		/** handle EOF and ctrl D */
 		vread = getline(&lineptr, &n, stdin);
