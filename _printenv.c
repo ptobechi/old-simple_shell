@@ -2,6 +2,7 @@
 
 /**
  * _printenv - print environmental variables
+ * @env: environment variable
  *
  * Return: void
  */
