@@ -8,6 +8,7 @@
  */
 void handle_signal(int signum)
 {
-	write(STDOUT_FILENO, "\n", 1);
-	exit(signum);
+	write(STDOUT_FILENO, "\n$ ", 3);
+	errno = signum;
 }
+

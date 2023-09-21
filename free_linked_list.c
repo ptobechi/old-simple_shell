@@ -8,15 +8,15 @@
  */
 void _free_linked_list(p_ll *head)
 {
-	p_ll *temp;
+	p_ll *temp = head;
 
-	while (head != NULL)
+	while (temp != NULL)
 	{
-		temp = head;
-		head = temp->next;
+		p_ll *next = temp->next;
+
 		free(temp->path);
 		free(temp);
+		temp = next;
 	}
 }
-
 

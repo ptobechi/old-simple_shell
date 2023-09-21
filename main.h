@@ -1,6 +1,7 @@
 #ifndef _MAIN_H
 #define _MAIN_H
 
+#include <errno.h>
 #include <unistd.h>
 #include <stdio.h>
 #include <sys/wait.h>
@@ -9,6 +10,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <signal.h>
+void interactive_mode(char **argv, char **envp);
 char **_create_cmd_table(char *tokens, char *delim);
 extern char *lineptr;
 extern char **environ;
@@ -17,6 +19,7 @@ extern char **environ;
 #ifndef _PRINT_ENV
 #define _PRINT_ENV
 void _printenv(char **env);
+void _prompt(void);
 int exit_shell(int argc, char **argv, char **envp);
 #endif
 
@@ -133,7 +136,7 @@ char *find_cmd_full_path(char *cmd);
 
 #ifndef _GET_CMD_PATH
 #define _GET_CMD_PATH
-char *get_cmd_path(char *cmd);
+char *get_cmd_path(char *cmd, int *flag);
 #endif
 
 #ifndef _RUN_CMD

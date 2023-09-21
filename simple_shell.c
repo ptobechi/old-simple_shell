@@ -19,41 +19,53 @@ int main(int argc, char **argv, char **envp)
 	(void)argv;
 
 	signal(SIGINT, handle_signal);
-
 	while (1)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			write(STDOUT_FILENO, "$ \n", 1);
+			write(STDOUT_FILENO, "$", 1);
+			fflush(stdout);
 		}
+
 		/** handle EOF and ctrl D */
 		vread = getline(&lineptr, &n, stdin);
 		if (vread == -1)
-		{
-			printf("\n");
 			break;
-		}
 
 		/** handle tokenization and cmd table */
 		_argv =	_create_cmd_table(lineptr, delim);
 
-		/** handle exit*/
-		if (_strccmp(_argv[0], "exit", '\0') == 0)
-		{
-			free_2d_array(_argv);
-			exit(0);
-		}
-		else if (_strccmp(_argv[0], "env", '\0') == 0)
-			/** prints environment variable */
-			_printenv(envp);
-		else
-			/** execute command */
-			run_cmd(_argv);
-
-	/*	free_2d_array(_argv);*/
+		/** enter shell mode */
+		interactive_mode(_argv, envp);
 	}
 
 	free(lineptr);
 
 	return (0);
 }
+
+/**
+ * interactive_mode - takes cmd from terminal
+ * @_argv: command table
+ * @envp: environment pointer
+ *
+ * Return: void
+ */
+void interactive_mode(char **_argv, char **envp)
+{
+	/** handle exit*/
+	if (_strccmp(_argv[0], "exit", '\0') == 0)
+	{
+		free_2d_array(_argv);
+		exit(0);
+	}
+	else if (_strccmp(_argv[0], "env", '\0') == 0)
+		/** prints environment variable */
+		_printenv(envp);
+	else
+		/** execute command */
+		run_cmd(_argv);
+
+	free_2d_array(_argv);
+}
+

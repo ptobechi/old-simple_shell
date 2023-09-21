@@ -23,6 +23,7 @@ char **_create_cmd_table(char *tokens, char *delim)
 	}
 
 	/** tokenize token_cpy and store tokens to _arr */
+	memset(_arr, 0, (token_len + 1));
 	i = 0;
 	tokens_cpy = _strdup(tokens);
 	token = strtok(tokens_cpy, delim);
