@@ -41,7 +41,7 @@ int main(int argc, char **argv, char **envp)
 		if (_strccmp(_argv[0], "exit", '\0') == 0)
 		{
 			free_2d_array(_argv);
-			exit(900);
+			exit(0);
 		}
 		else if (_strccmp(_argv[0], "env", '\0') == 0)
 			/** prints environment variable */

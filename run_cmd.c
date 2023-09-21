@@ -28,6 +28,7 @@ void run_cmd(char **_argv)
 				perror("$");
 		}
 		free(cmd_path);
+		free_2d_array(_argv);
 	}
 
 	wait(&status); /* wait for child_p completion */
