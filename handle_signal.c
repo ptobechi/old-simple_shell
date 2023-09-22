@@ -9,6 +9,9 @@
 void handle_signal(int signum)
 {
 	write(STDOUT_FILENO, "\n$ ", 3);
-	errno = signum;
+	if (sigint == 2)
+	{
+		errno = 130;
+	}
 }
 
