@@ -28,11 +28,12 @@ int main(int argc, char **argv, char **envp)
 		}
 
 		/** handle EOF and ctrl D */
-		vread = getline(&lineptr, &n, stdin);
+		vread = _getline(&lineptr, &n, stdin);
 		if (vread == -1)
 			break;
 
 		/** handle tokenization and cmd table */
+		_trim(&lineptr);
 		_argv =	_create_cmd_table(lineptr, delim);
 
 		/** enter shell mode */

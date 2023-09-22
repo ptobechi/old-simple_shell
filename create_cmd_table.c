@@ -29,7 +29,8 @@ char **_create_cmd_table(char *tokens, char *delim)
 	token = strtok(tokens_cpy, delim);
 	while (token != NULL)
 	{
-		_arr[i] = _strdup(remove_newline_char(token));
+		/*_arr[i] = _strdup(remove_newline_char(token));*/
+		_arr[i] = _strdup(token);
 		if (_arr[i] == NULL)
 		{
 			perror("Memory allocation failed");

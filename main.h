@@ -13,6 +13,8 @@
 
 #define BUFFER_SIZE 128
 
+void _trim(char **str);
+size_t _strlen(const char *str);
 int _resize_getline(char **lineptr, size_t *bytes, size_t new_size);
 ssize_t _readline(char **lineptr, size_t *bytes, int n);
 ssize_t _getline(char **lineptr, size_t *bytes, FILE *stream);
