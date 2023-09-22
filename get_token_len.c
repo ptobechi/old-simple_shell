@@ -12,7 +12,7 @@ int get_token_len(char *str, char *delim)
 	int count = 1;
 
 	if (str == NULL)
-		return (0);
+		return (-1);
 
 	while (*str != '\0')
 	{

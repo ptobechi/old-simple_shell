@@ -13,6 +13,7 @@
 
 #define BUFFER_SIZE 128
 
+void rm_trailing_space(char *s);
 void _trim(char **str);
 size_t _strlen(const char *str);
 int _resize_getline(char **lineptr, size_t *bytes, size_t new_size);
@@ -21,7 +22,7 @@ ssize_t _getline(char **lineptr, size_t *bytes, FILE *stream);
 char *_memset(char *str, char _char, unsigned int n);
 char *_memcpy(char *dest, char *src, unsigned int bytes);
 void *_realloc(void *ptr, size_t size);
-void interactive_mode(char **argv, char **envp);
+void exec_shell(char **argv, char **envp);
 char **_create_cmd_table(char *tokens, char *delim);
 extern char *lineptr;
 extern char **environ;

@@ -68,6 +68,14 @@ ssize_t _readline(char **lineptr, size_t *bytes, int fd)
 	ssize_t total_bytes_read = 0;
 
 	buffer_index = 0;
+	/*If the buffer is empty fill it, and reset the index to 0*/
+	if (buffer_index >= read_bytes)
+	{
+		read_bytes = read(fd, _buffer, BUFFER_SIZE);
+		if (read_bytes <= 0)
+			return ((total_bytes_read == 0) ? EOF : -1);
+	}
+
 
 	while (1)
 	{
@@ -78,19 +86,9 @@ ssize_t _readline(char **lineptr, size_t *bytes, int fd)
 			return (-1); /*Memory allocation Failed*/
 		}
 
-		/*If the buffer is empty fill it, and reset the index to 0*/
-		if (buffer_index >= read_bytes)
-		{
-			read_bytes = read(fd, _buffer, BUFFER_SIZE);
-			if (read_bytes <= 0)
-				return ((total_bytes_read == 0) ? EOF : -1);
-		}
-
 		if (_buffer[buffer_index] == '\n')
 		{
-			/*Set Null Terminating character*/
-			(*lineptr)[buffer_index] = '\0';
-			/*Reset Buffer*/
+			(*lineptr)[buffer_index] = '\n';
 			buffer_index = 0;
 			_memset(_buffer, 0, BUFFER_SIZE);
 			return (total_bytes_read + 1);

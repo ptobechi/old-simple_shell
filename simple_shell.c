@@ -28,16 +28,19 @@ int main(int argc, char **argv, char **envp)
 		}
 
 		/** handle EOF and ctrl D */
-		vread = _getline(&lineptr, &n, stdin);
+		vread = getline(&lineptr, &n, stdin);
 		if (vread == -1)
 			break;
 
 		/** handle tokenization and cmd table */
-		_trim(&lineptr);
 		_argv =	_create_cmd_table(lineptr, delim);
 
+		/*int i;
+		for (i = 0;  _argv[i] != NULL; i++)
+			printf("%s\n",_argv[i]);*/
 		/** enter shell mode */
-		interactive_mode(_argv, envp);
+		exec_shell(_argv, envp);
+
 	}
 
 	free(lineptr);
@@ -46,13 +49,13 @@ int main(int argc, char **argv, char **envp)
 }
 
 /**
- * interactive_mode - takes cmd from terminal
+ * exec_shell - takes cmd from terminal
  * @_argv: command table
  * @envp: environment pointer
  *
  * Return: void
  */
-void interactive_mode(char **_argv, char **envp)
+void exec_shell(char **_argv, char **envp)
 {
 	/** handle exit*/
 	if (_strccmp(_argv[0], "exit", '\0') == 0)

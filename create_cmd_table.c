@@ -13,6 +13,7 @@ char **_create_cmd_table(char *tokens, char *delim)
 	int token_len, i;
 
 	token_len = get_token_len(tokens, delim);
+	/*	printf("%d\n", token_len);*/
 
 	/** mem allocation for cmd table */
 	_arr = (char **)malloc(sizeof(char *) * (token_len + 1));
@@ -29,8 +30,7 @@ char **_create_cmd_table(char *tokens, char *delim)
 	token = strtok(tokens_cpy, delim);
 	while (token != NULL)
 	{
-		/*_arr[i] = _strdup(remove_newline_char(token));*/
-		_arr[i] = _strdup(token);
+		_arr[i] = _strdup(remove_newline_char(token));
 		if (_arr[i] == NULL)
 		{
 			perror("Memory allocation failed");
