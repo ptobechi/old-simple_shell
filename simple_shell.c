@@ -35,9 +35,6 @@ int main(int argc, char **argv, char **envp)
 		/** handle tokenization and cmd table */
 		_argv =	_create_cmd_table(lineptr, delim);
 
-		/*int i;
-		for (i = 0;  _argv[i] != NULL; i++)
-			printf("%s\n",_argv[i]);*/
 		/** enter shell mode */
 		exec_shell(_argv, envp);
 

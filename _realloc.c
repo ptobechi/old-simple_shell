@@ -32,7 +32,7 @@ char *_memcpy(char *dest, char *src, unsigned int bytes)
 
 	for (i = 0; i < bytes && src[i] != '\0'; i++)
 		dest[i] = src[i];
-	
+
 	return (dest);
 }
 
