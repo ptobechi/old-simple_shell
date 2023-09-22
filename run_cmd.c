@@ -6,14 +6,16 @@
  *
  * Return: void
  */
-void run_cmd(char **_argv)
+void run_cmd(char **_argv, char **envp)
 {
 	int status, handle_flag = 0;
 	pid_t child_p;
-	char *cmd_path;
+	char *cmd_path, **env_var = NULL;
 
-	/** lookup command*/
+	/** get command location*/
 	cmd_path = get_cmd_path(_argv[0], &handle_flag);
+	/** create custom environment path */
+	env_var = _create_env_table(envp);
 	if (cmd_path == NULL)
 	{
 		free(cmd_path);
@@ -24,12 +26,17 @@ void run_cmd(char **_argv)
 		child_p = fork();
 
 		if (child_p == 0)
-			if (execve(cmd_path, _argv, NULL) == -1)
-				perror("$");
+			if (execve(cmd_path, _argv, env_var) == -1)
+				perror((char *)EACCES);
 
 		if (handle_flag)
 			free(cmd_path);
 	}
 
-	wait(&status); /* wait for child_p completion */
+	/* Parent process*/
+	waitpid(child_p, &status, 0);
+
+	if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+		printf("Command failed\n");
 }
+

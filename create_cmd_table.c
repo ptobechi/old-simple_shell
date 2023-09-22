@@ -13,7 +13,6 @@ char **_create_cmd_table(char *tokens, char *delim)
 	int token_len, i;
 
 	token_len = get_token_len(tokens, delim);
-	/*	printf("%d\n", token_len);*/
 
 	/** mem allocation for cmd table */
 	_arr = (char **)malloc(sizeof(char *) * (token_len + 1));

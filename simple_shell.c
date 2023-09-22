@@ -15,8 +15,8 @@ int main(int argc, char **argv, char **envp)
 	char **_argv = NULL, *delim = " ";
 	char *lineptr = NULL;
 
-	(void)argc;
-	(void)argv;
+	if (argc > 1)
+		_file_input(argv, envp);
 
 	signal(SIGINT, handle_signal);
 	while (1)
@@ -65,7 +65,7 @@ void exec_shell(char **_argv, char **envp)
 		_printenv(envp);
 	else
 		/** execute command */
-		run_cmd(_argv);
+		run_cmd(_argv, envp);
 
 	free_2d_array(_argv);
 }

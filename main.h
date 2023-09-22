@@ -10,9 +10,16 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <signal.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+extern char **environ;
 
 #define BUFFER_SIZE 128
-
+void err_msg(char *a, char *b,  char *c);
+char **_create_env_table(char **env);
+int _file_input(char **argv, char **env);
 void rm_trailing_space(char *s);
 void _trim(char **str);
 size_t _strlen(const char *str);
@@ -154,7 +161,7 @@ char *get_cmd_path(char *cmd, int *flag);
 
 #ifndef _RUN_CMD
 #define _RUN_CMD
-void run_cmd(char **_argv);
+void run_cmd(char **_argv, char **envp);
 #endif
 
 #ifndef HANDLE_SIGNAL_H

@@ -9,7 +9,7 @@
 void handle_signal(int signum)
 {
 	write(STDOUT_FILENO, "\n$ ", 3);
-	if (sigint == 2)
+	if (signum == 2)
 	{
 		errno = 130;
 	}
