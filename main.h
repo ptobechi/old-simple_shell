@@ -32,7 +32,7 @@ ssize_t _getline(char **lineptr, size_t *bytes, FILE *stream);
 char *_memset(char *str, char _char, unsigned int n);
 char *_memcpy(char *dest, char *src, unsigned int bytes);
 void *_realloc(void *ptr, size_t size);
-void exec_shell(char **argv, char **envp);
+void exec_shell(char **argv, char **envp, char **lineptr);
 char **_create_cmd_table(char *tokens, char *delim);
 extern char *lineptr;
 extern char **environ;

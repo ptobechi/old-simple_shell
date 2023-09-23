@@ -36,7 +36,7 @@ int main(int argc, char **argv, char **envp)
 		_argv =	_create_cmd_table(lineptr, delim);
 
 		/** enter shell mode */
-		exec_shell(_argv, envp);
+		exec_shell(_argv, envp, &lineptr);
 
 	}
 
@@ -52,7 +52,7 @@ int main(int argc, char **argv, char **envp)
  *
  * Return: void
  */
-void exec_shell(char **_argv, char **envp)
+void exec_shell(char **_argv, char **envp, char **lineptr)
 {
 	int exit_status = 0;
 
@@ -61,6 +61,7 @@ void exec_shell(char **_argv, char **envp)
 	{
 		if (_argv[1] != NULL)
 			exit_status = _atoi(_argv[1]);
+		free(*lineptr);
 		free_2d_array(_argv);
 		exit(exit_status);
 	}
