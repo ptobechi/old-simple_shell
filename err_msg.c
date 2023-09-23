@@ -3,6 +3,7 @@
 /**
  * error_msg - custom error message
  * @erros: array of null terminated strings
+ * @path: cmd path
  *
  * Return: void
  */
@@ -32,11 +33,11 @@ void error_msg(char **erros, char *path)
 	}
 	i = 0;
 	while (*path != '\0')
-        {
-            err[len] = path[i];
-            len++;
-            path++;
-        }
+	{
+		err[len] = path[i];
+		len++;
+		path++;
+	}
 	err[len++] = '\n';
 
 	/* Write the error message to stderr*/
