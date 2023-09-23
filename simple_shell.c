@@ -49,6 +49,7 @@ int main(int argc, char **argv, char **envp)
  * exec_shell - takes cmd from terminal
  * @_argv: command table
  * @envp: environment pointer
+ * @lineptr: getline read text refrence
  *
  * Return: void
  */
