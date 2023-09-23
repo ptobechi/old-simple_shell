@@ -65,3 +65,4 @@ void _trim(char **str)
 	/*Update the pointer to the trimmed string*/
 	*str = start;
 }
+

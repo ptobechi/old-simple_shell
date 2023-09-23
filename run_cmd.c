@@ -18,8 +18,10 @@ void run_cmd(char **_argv, char **envp)
 	env_var = _create_env_table(envp);
 	if (cmd_path == NULL)
 	{
+		free(env_var);
 		free(cmd_path);
-		perror("$");
+		_err_msg("./hsh: 1", _argv[0], " not found\n");
+		exit(127);
 	}
 	else
 	{
@@ -32,11 +34,12 @@ void run_cmd(char **_argv, char **envp)
 		if (handle_flag)
 			free(cmd_path);
 	}
+	free_2d_array(env_var);
 
 	/* Parent process*/
 	waitpid(child_p, &status, 0);
 
 	if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
-		printf("Command failed\n");
+		exit(2);
 }
 

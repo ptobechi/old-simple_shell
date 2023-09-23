@@ -14,10 +14,11 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-extern char **environ;
-
 #define BUFFER_SIZE 128
-void err_msg(char *a, char *b,  char *c);
+
+const char *_str_chr(const char *str, char _char);
+void _err_msg(char *a, char *b, char *c);
+void err_msg(char *a, char *b, char *c);
 char **_create_env_table(char **env);
 int _file_input(char **argv, char **env);
 void rm_trailing_space(char *s);
@@ -96,7 +97,7 @@ int *get_tokens_positions(char *str, char *delim);
 
 #ifndef _GET_TOKENS
 #define _GET_TOKENS
-/*char **_strtok(char *str, char delim);*/
+char *_strtok(char *str, char *delim);
 #endif
 
 #ifndef _GET_LINE
@@ -107,11 +108,6 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 #ifndef REMOVE_NEWLINE_CHAR
 #define REMOVE_NEWLINE_CHAR
 char *remove_newline_char(char *s);
-#endif
-
-#ifndef CREATE_CMD_TABLE
-#define CREATE_CMD_TABLE
-char **create_cmd_table(char *, char);
 #endif
 
 #ifndef _STRCCMP

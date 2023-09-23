@@ -3,6 +3,7 @@
 /**
  * _file_input - execute command from file
  * @argv: file path
+ * @env: eviron variable
  *
  * Return: Always (0) Success
  */
@@ -14,7 +15,7 @@ int _file_input(char **argv, char **env)
 
 	if (access(argv[1], R_OK) != 0)
 	{
-		err_msg(argv[0], " Can't open", argv[1]);
+		err_msg(argv[0], "Can't open ", argv[1]);
 		exit(127);
 	}
 	fd = open(argv[1], O_RDONLY);
@@ -41,12 +42,11 @@ int _file_input(char **argv, char **env)
 
 			command[bytes_read] = '\0';
 			args[2] = command;
+			run_cmd(args, env_var);
 
-			run_cmd(args, env);
 		}
 	}
 
-	free_2d_array(env_var);
-	close(fd), exit(0);
+	free_2d_array(env_var), close(fd), exit(0);
 	return (0);
 }

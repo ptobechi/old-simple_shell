@@ -26,7 +26,7 @@ char **_create_cmd_table(char *tokens, char *delim)
 	memset(_arr, 0, (token_len + 1));
 	i = 0;
 	tokens_cpy = _strdup(tokens);
-	token = strtok(tokens_cpy, delim);
+	token = _strtok(tokens_cpy, delim);
 	while (token != NULL)
 	{
 		_arr[i] = _strdup(remove_newline_char(token));
@@ -37,7 +37,7 @@ char **_create_cmd_table(char *tokens, char *delim)
 			free_2d_array(_arr);
 			return (NULL);
 		}
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 		i++;
 	}
 	_arr[i] = NULL;
