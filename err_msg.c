@@ -1,6 +1,49 @@
 #include "main.h"
 
 /**
+ * error_msg - custom error message
+ * @erros: array of null terminated strings
+ *
+ * Return: void
+ */
+void error_msg(char **erros, char *path)
+{
+	char err[256] = ""; /* initialize err msg to empty str */
+	int i, len = 0;
+
+	/* Create the custom error message */
+	for (i = 0; erros[i] != NULL; i++)
+	{
+		char *current = erros[i]; /* get current str in arr */
+
+		while (*current != '\0')
+		{
+			err[len] = *current; /*concatenate err*/
+			len++;
+			current++;
+		}
+
+		/*Add a : in strings*/
+		if (erros[i + 1] != NULL)
+		{
+			err[len] = ':';
+			len++;
+		}
+	}
+	i = 0;
+	while (*path != '\0')
+        {
+            err[len] = path[i];
+            len++;
+            path++;
+        }
+	err[len++] = '\n';
+
+	/* Write the error message to stderr*/
+	write(STDERR_FILENO, err, len);
+}
+
+/**
  * err_msg - custom error messages
  * @a: shell (hsh)
  * @b: custom msg

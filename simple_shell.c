@@ -54,11 +54,15 @@ int main(int argc, char **argv, char **envp)
  */
 void exec_shell(char **_argv, char **envp)
 {
+	int exit_status = 0;
+
 	/** handle exit*/
 	if (_strccmp(_argv[0], "exit", '\0') == 0)
 	{
+		if (_argv[1] != NULL)
+			exit_status = _atoi(_argv[1]);
 		free_2d_array(_argv);
-		exit(0);
+		exit(exit_status);
 	}
 	else if (_strccmp(_argv[0], "env", '\0') == 0)
 		/** prints environment variable */

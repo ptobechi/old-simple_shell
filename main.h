@@ -16,6 +16,8 @@
 
 #define BUFFER_SIZE 128
 
+void error_msg(char **arr, char *path);
+int _atoi(char *s);
 const char *_str_chr(const char *str, char _char);
 void _err_msg(char *a, char *b, char *c);
 void err_msg(char *a, char *b, char *c);
