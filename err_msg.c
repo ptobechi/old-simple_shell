@@ -41,7 +41,7 @@ void err_msg(char *a, char *b, char *c)
 }
 
 /**
- * err_msg - custom error messages
+ * _err_msg - custom error messages
  * @a: shell (hsh)
  * @b: custom msg
  * @c: command

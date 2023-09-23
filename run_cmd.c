@@ -3,6 +3,7 @@
 /**
  * run_cmd - execute cmd
  * @_argv: array of null terminated strings
+ * @envp: environment variables
  *
  * Return: void
  */
